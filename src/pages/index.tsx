@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import TaskHeader from "../components/TaskHeader";
 
 const Home: NextPage = () => {
   return (
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="">
+        <TaskHeader />
         <h1 className="">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
