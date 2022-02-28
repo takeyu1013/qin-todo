@@ -13,7 +13,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="">
-        <TaskHeader />
+        <TaskHeader schedule="next" />
         <h1 className="">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
