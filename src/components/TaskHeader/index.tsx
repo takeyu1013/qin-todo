@@ -7,19 +7,36 @@ const ScheduleType = {
 } as const;
 type ScheduleType = typeof ScheduleType[keyof typeof ScheduleType];
 
-const theme: Record<ScheduleType, string> = {
-  today: "text-rose-500",
-  tomorrow: "text-orange-400",
-  next: "text-yellow-400",
-};
-
 type Props = {
   schedule: ScheduleType;
 };
 
+type ThemeType = {
+  title: string;
+  color: string;
+};
+
 const TaskHeader: VFC<Props> = ({ schedule }) => {
-  const className = `${theme[schedule]} font-bold text-xl`;
-  return <h1 className={className}>今日する</h1>;
+  const theme: Readonly<Record<ScheduleType, ThemeType>> = {
+    today: {
+      title: "今日する",
+      color: "text-rose-500",
+    },
+    tomorrow: {
+      title: "明日する",
+      color: "text-orange-400",
+    },
+    next: {
+      title: "今度する",
+      color: "text-yellow-400",
+    },
+  };
+
+  return (
+    <h1 className={`${theme[schedule].color} font-bold text-xl`}>
+      {theme[schedule].title}
+    </h1>
+  );
 };
 
 export default TaskHeader;
