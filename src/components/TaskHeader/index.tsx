@@ -11,13 +11,18 @@ type Props = {
   schedule: ScheduleType;
 };
 
-type ThemeType = {
-  title: "今日する" | "明日する" | "今度する"
-  textColor: string;
-};
+type ThemeType = Readonly<
+  Record<
+    ScheduleType,
+    {
+      title: "今日する" | "明日する" | "今度する";
+      textColor: string;
+    }
+  >
+>;
 
 const TaskHeader: VFC<Props> = ({ schedule }) => {
-  const theme: Readonly<Record<ScheduleType, ThemeType>> = {
+  const theme: ThemeType = {
     today: {
       title: "今日する",
       textColor: "text-rose-500",
