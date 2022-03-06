@@ -38,7 +38,7 @@ const TaskHeader: VFC<Props> = ({ schedule }) => {
   };
   const { title, textColor } = theme[schedule];
 
-  return <h1 className={`${textColor} font-bold text-xl`}>{title}</h1>;
+  return <h2 className={`${textColor} font-bold text-xl`}>{title}</h2>;
 };
 
 export default TaskHeader;
