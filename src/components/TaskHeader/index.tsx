@@ -12,7 +12,7 @@ type Props = {
 };
 
 type ThemeType = {
-  title: string;
+  title: "今日する" | "明日する" | "今度する"
   textColor: string;
 };
 
