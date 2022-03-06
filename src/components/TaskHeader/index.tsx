@@ -13,7 +13,7 @@ type Props = {
 
 type ThemeType = {
   title: string;
-  color: string;
+  textColor: string;
 };
 
 const TaskHeader: VFC<Props> = ({ schedule }) => {
