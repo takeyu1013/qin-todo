@@ -20,20 +20,20 @@ const TaskHeader: VFC<Props> = ({ schedule }) => {
   const theme: Readonly<Record<ScheduleType, ThemeType>> = {
     today: {
       title: "今日する",
-      color: "text-rose-500",
+      textColor: "text-rose-500",
     },
     tomorrow: {
       title: "明日する",
-      color: "text-orange-400",
+      textColor: "text-orange-400",
     },
     next: {
       title: "今度する",
-      color: "text-yellow-400",
+      textColor: "text-yellow-400",
     },
   };
-  const { title, color } = theme[schedule];
+  const { title, textColor } = theme[schedule];
 
-  return <h1 className={`${color} font-bold text-xl`}>{title}</h1>;
+  return <h1 className={`${textColor} font-bold text-xl`}>{title}</h1>;
 };
 
 export default TaskHeader;
