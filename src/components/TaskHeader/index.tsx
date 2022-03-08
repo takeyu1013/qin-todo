@@ -21,7 +21,7 @@ type ThemeType = Readonly<
   >
 >;
 
-const TaskHeader: VFC<Props> = ({ schedule }) => {
+export const TaskHeader: VFC<Props> = ({ schedule }) => {
   const theme: ThemeType = {
     today: {
       title: "今日する",
@@ -40,5 +40,3 @@ const TaskHeader: VFC<Props> = ({ schedule }) => {
 
   return <h2 className={`${textColor} font-bold text-xl`}>{title}</h2>;
 };
-
-export default TaskHeader;
