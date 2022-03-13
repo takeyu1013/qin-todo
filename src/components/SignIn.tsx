@@ -9,10 +9,8 @@ type Props = {
 
 export const SignIn: VFC<Props> = ({ supabaseClient }) => {
   return (
-    <>
-      <Auth.UserContextProvider supabaseClient={supabaseClient}>
-        <SignInPresenter supabaseClient={supabaseClient}></SignInPresenter>
-      </Auth.UserContextProvider>
-    </>
+    <Auth.UserContextProvider supabaseClient={supabaseClient}>
+      <SignInPresenter supabaseClient={supabaseClient}></SignInPresenter>
+    </Auth.UserContextProvider>
   );
 };
