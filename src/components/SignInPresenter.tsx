@@ -6,10 +6,12 @@ type Props = {
   supabaseClient: SupabaseClient;
 };
 
-export const SignInPresenter: VFC<Props> = ({ supabaseClient }) => (
-  <Auth
-    onlyThirdPartyProviders={true}
-    supabaseClient={supabaseClient}
-    providers={["google"]}
-  />
-);
+export const SignInPresenter: VFC<Props> = ({ supabaseClient }) => {
+  return (
+    <Auth
+      onlyThirdPartyProviders={true}
+      supabaseClient={supabaseClient}
+      providers={["google"]}
+    />
+  );
+};

@@ -1,16 +1,19 @@
 import { VFC } from "react";
 import { Auth } from "@supabase/ui";
-import type { SupabaseClient } from "@supabase/supabase-js";
 import { SignInPresenter } from "./SignInPresenter";
+import { TaskHeader } from "./TaskHeader";
+import { supabase } from "../../utils/supabaseClient";
 
-type Props = {
-  supabaseClient: SupabaseClient;
-};
+export const SignIn: VFC = () => {
+  const { user } = Auth.useUser();
 
-export const SignIn: VFC<Props> = ({ supabaseClient }) => {
   return (
-    <Auth.UserContextProvider supabaseClient={supabaseClient}>
-      <SignInPresenter supabaseClient={supabaseClient}></SignInPresenter>
-    </Auth.UserContextProvider>
+    <>
+      {user ? (
+        <TaskHeader schedule={"today"}></TaskHeader>
+      ) : (
+        <SignInPresenter supabaseClient={supabase} />
+      )}
+    </>
   );
 };
