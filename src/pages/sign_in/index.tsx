@@ -1,10 +1,5 @@
 import { Auth, Typography, Button } from "@supabase/ui";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  "https://your-project-url.supabase.co",
-  "PROJECT_ANON_KEY"
-);
+import { supabase } from "../../../utils/supabaseClient";
 
 const Container = (props) => {
   const { user } = Auth.useUser();
