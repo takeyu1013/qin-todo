@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { Auth, Typography, Button } from "@supabase/ui";
-import { supabase } from "../../../utils/supabaseClient";
+import { supabase } from "../../utils/supabaseClient";
 
 type ContainerProps = {
   supabaseClient: SupabaseClient;
@@ -22,7 +22,7 @@ const Container = (props: ContainerProps) => {
   return props.children;
 };
 
-const AuthBasic: NextPage = () => {
+const SignInPage: NextPage = () => {
   return (
     <Auth.UserContextProvider supabaseClient={supabase}>
       <Container supabaseClient={supabase}>
@@ -36,4 +36,4 @@ const AuthBasic: NextPage = () => {
   );
 };
 
-export default AuthBasic;
+export default SignInPage;
