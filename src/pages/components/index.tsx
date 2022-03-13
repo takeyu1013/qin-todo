@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 
-const Components: NextPage = () => {
+const ComponentsPage: NextPage = () => {
   return <></>;
 };
 
-export default Components;
+export default ComponentsPage;
