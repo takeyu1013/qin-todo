@@ -22,7 +22,7 @@ export default function AuthBasic() {
         <Auth
           onlyThirdPartyProviders={true}
           supabaseClient={supabase}
-          providers={["google", "facebook", "github"]}
+          providers={["google"]}
         />
       </Container>
     </Auth.UserContextProvider>
