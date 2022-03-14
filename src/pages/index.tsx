@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
-import { SignIn } from "../components/SignIn";
+import { Authentication } from "../components/Authentication";
 import { TaskHeader } from "../components/TaskHeader";
 
 const Home: NextPage = () => {
   return (
-    <SignIn>
+    <Authentication>
       <TaskHeader schedule={"today"} />
-    </SignIn>
+    </Authentication>
   );
 };
 
