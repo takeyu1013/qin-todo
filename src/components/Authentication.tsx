@@ -4,11 +4,11 @@ import { Auth } from "@supabase/ui";
 import { AuthenticationPresenter } from "./AuthenticationPresenter";
 import { supabase } from "../../utils/supabaseClient";
 
-type Props = {
+export type AuthenticationProps = {
   children: ReactNode;
 };
 
-export const Authentication: VFC<Props> = ({ children }) => {
+export const Authentication: VFC<AuthenticationProps> = ({ children }) => {
   const { session } = Auth.useUser();
   const [user, setUser] = useState<User | null>(null);
 
