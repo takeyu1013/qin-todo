@@ -3,6 +3,7 @@ import { User } from "@supabase/supabase-js";
 import { Auth } from "@supabase/ui";
 import { AuthenticationPresenter } from "./AuthenticationPresenter";
 import { supabase } from "../../utils/supabaseClient";
+import { Loader } from "./Loader";
 
 export type AuthenticationProps = {
   children: ReactNode;
@@ -11,11 +12,15 @@ export type AuthenticationProps = {
 export const Authentication: VFC<AuthenticationProps> = ({ children }) => {
   const { session } = Auth.useUser();
   const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     if (!user && session) {
+      setIsLoading(true);
+
       (async () => {
         const response = await supabase.auth.api.getUser(session.access_token);
+        setIsLoading(false);
         setUser(response.user);
       })();
     }
@@ -25,7 +30,10 @@ export const Authentication: VFC<AuthenticationProps> = ({ children }) => {
     return <AuthenticationPresenter supabaseClient={supabase} />;
   }
 
-  // TODO: replace with loading guard
+  if (isLoading) {
+    return <Loader />;
+  }
+
   if (!user) {
     return <AuthenticationPresenter supabaseClient={supabase} />;
   }
