@@ -18,7 +18,6 @@ export const Authentication: VFC<AuthenticationProps> = ({ children }) => {
     if (!user && session) {
       (async () => {
         const response = await supabase.auth.api.getUser(session.access_token);
-        setIsLoading(false);
         setUser(response.user);
       })();
     } else {
