@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { TaskHeader } from "../components/TaskHeader";
 import { Loader } from "../components/Loader";
 
-const DynamicAuthentication = dynamic<AuthenticationProps>(
+const Authentication = dynamic<AuthenticationProps>(
   () =>
     import("../components/Authentication").then((mod) => mod.Authentication),
   {
@@ -15,9 +15,9 @@ const DynamicAuthentication = dynamic<AuthenticationProps>(
 
 const Home: NextPage = () => {
   return (
-    <DynamicAuthentication>
+    <Authentication>
       <TaskHeader schedule={"today"} />
-    </DynamicAuthentication>
+    </Authentication>
   );
 };
 
