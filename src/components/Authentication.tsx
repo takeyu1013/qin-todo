@@ -15,6 +15,10 @@ export const Authentication: VFC<AuthenticationProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
     if (!user && session) {
       setIsLoading(true);
 
@@ -26,12 +30,12 @@ export const Authentication: VFC<AuthenticationProps> = ({ children }) => {
     }
   }, [user, session]);
 
-  if (!session) {
-    return <AuthenticationPresenter supabaseClient={supabase} />;
-  }
-
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (!session) {
+    return <AuthenticationPresenter supabaseClient={supabase} />;
   }
 
   return user ? (
