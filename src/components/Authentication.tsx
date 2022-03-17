@@ -34,9 +34,9 @@ export const Authentication: VFC<AuthenticationProps> = ({ children }) => {
     return <Loader />;
   }
 
-  if (!user) {
-    return <AuthenticationPresenter supabaseClient={supabase} />;
-  }
-
-  return <>{children}</>;
+  return user ? (
+    <>{children}</>
+  ) : (
+    <AuthenticationPresenter supabaseClient={supabase} />
+  );
 };
