@@ -15,18 +15,14 @@ export const Authentication: VFC<AuthenticationProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
-  useEffect(() => {
     if (!user && session) {
-      setIsLoading(true);
-
       (async () => {
         const response = await supabase.auth.api.getUser(session.access_token);
         setIsLoading(false);
         setUser(response.user);
       })();
+    } else {
+      setIsLoading(false);
     }
   }, [user, session]);
 
