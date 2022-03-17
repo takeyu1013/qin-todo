@@ -1,6 +1,17 @@
 import type { NextPage } from "next";
-import { Authentication } from "../components/Authentication";
+import type { AuthenticationProps } from "../components/Authentication";
+import dynamic from "next/dynamic";
 import { TaskHeader } from "../components/TaskHeader";
+import { Loader } from "../components/Loader";
+
+const Authentication = dynamic<AuthenticationProps>(
+  () =>
+    import("../components/Authentication").then((mod) => mod.Authentication),
+  {
+    ssr: false,
+    loading: () => <Loader />,
+  }
+);
 
 const Home: NextPage = () => {
   return (
