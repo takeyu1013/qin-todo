@@ -1,6 +1,6 @@
 import type { VFC } from "react";
 
-const ScheduleType = {
+export const ScheduleType = {
   TODAY: "today",
   TOMORROW: "tomorrow",
   NEXT: "next",
