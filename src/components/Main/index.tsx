@@ -35,9 +35,16 @@ export const Main: VFC = () => {
     <main className="px-20 pt-10 flex">
       {Object.values(ScheduleType).map((schedule) => {
         return (
-          <div className="pl-6 pt-6" key={schedule}>
-            <TaskHeader schedule={schedule} />
-            <PlusIcon />
+          <div className="pl-6 pt-6 w-1/3" key={schedule}>
+            <div className="pb-4">
+              <TaskHeader schedule={schedule} />
+            </div>
+            <div className="flex">
+              <div className="pr-3">
+                <PlusIcon />
+              </div>
+              <input className="outline-none" placeholder="タスクを追加する" />
+            </div>
           </div>
         );
       })}
