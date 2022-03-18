@@ -1,6 +1,7 @@
 import type { VFC } from "react";
 
-import { ScheduleType, TaskHeader } from "../TaskHeader";
+import type { ScheduleType } from "../TaskHeader";
+import { ScheduleType as Schedule, TaskHeader } from "../TaskHeader";
 
 const PlusIcon: VFC = () => {
   return (
@@ -30,24 +31,40 @@ const PlusIcon: VFC = () => {
   );
 };
 
-export const Main: VFC = () => {
+const TaskCard: VFC<{ schedule: ScheduleType }> = ({ schedule }) => {
   return (
-    <main className="px-20 pt-10 flex">
-      {Object.values(ScheduleType).map((schedule) => {
+    <div className="pl-6 pt-6" key={schedule}>
+      <div className="pb-4">
+        <TaskHeader schedule={schedule} />
+      </div>
+      <div className="flex">
+        <div className="pr-3">
+          <PlusIcon />
+        </div>
+        <input className="outline-none" placeholder="タスクを追加する" />
+      </div>
+    </div>
+  );
+};
+
+const TaskCardList: VFC = () => {
+  return (
+    <div className="flex">
+      {Object.values(Schedule).map((schedule) => {
         return (
-          <div className="pl-6 pt-6 w-1/3" key={schedule}>
-            <div className="pb-4">
-              <TaskHeader schedule={schedule} />
-            </div>
-            <div className="flex">
-              <div className="pr-3">
-                <PlusIcon />
-              </div>
-              <input className="outline-none" placeholder="タスクを追加する" />
-            </div>
+          <div className="w-1/3" key={schedule}>
+            <TaskCard schedule={schedule} />
           </div>
         );
       })}
+    </div>
+  );
+};
+
+export const Main: VFC = () => {
+  return (
+    <main className="px-20 pt-10">
+      <TaskCardList />
     </main>
   );
 };

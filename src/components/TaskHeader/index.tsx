@@ -5,7 +5,7 @@ export const ScheduleType = {
   TOMORROW: "tomorrow",
   NEXT: "next",
 } as const;
-type ScheduleType = typeof ScheduleType[keyof typeof ScheduleType];
+export type ScheduleType = typeof ScheduleType[keyof typeof ScheduleType];
 
 type Props = {
   schedule: ScheduleType;
