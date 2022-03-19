@@ -1,5 +1,4 @@
-import { ReactNode, useEffect, useState, VFC } from "react";
-import { Session, User, ApiError } from "@supabase/gotrue-js";
+import { ReactNode, VFC } from "react";
 import { Auth } from "@supabase/ui";
 import { AuthenticationPresenter } from "./AuthenticationPresenter";
 import { supabase } from "../../utils/supabaseClient";
