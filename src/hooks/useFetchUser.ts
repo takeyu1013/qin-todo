@@ -26,7 +26,7 @@ const useFetchUser = (session: Session | null) => {
     }
   }, [user, session]);
 
-  return { user, error, isLoading, fetchUserBySession };
+  return { user, error, isLoading, refetchUserBySession: fetchUserBySession };
 };
 
 export default useFetchUser;
