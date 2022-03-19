@@ -16,15 +16,17 @@ const useFetchUser = (session: Session | null) => {
       console.error(error.message, error.status);
     }
     if (user) setUser(user);
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    if (!user && session) {
+    if (session) {
       fetchUserBySession(session);
     } else {
       setIsLoading(false);
     }
-  }, [user, session]);
+  }, [session]);
 
   return { user, error, isLoading, refetchUserBySession: fetchUserBySession };
 };

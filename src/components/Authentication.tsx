@@ -21,10 +21,6 @@ export const Authentication: VFC<AuthenticationProps> = ({ children }) => {
     return <Loader />;
   }
 
-  if (!session) {
-    return <AuthenticationPresenter supabaseClient={supabase} />;
-  }
-
   return user ? (
     <>{children}</>
   ) : (
