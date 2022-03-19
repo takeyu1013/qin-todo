@@ -33,7 +33,7 @@ const PlusIcon: VFC = () => {
 
 const TaskCard: VFC<TaskHeaderProps> = ({ schedule }) => {
   return (
-    <div className="pl-6 pt-6" key={schedule}>
+    <div className="pl-6 pt-6">
       <div className="pb-4">
         <TaskHeader schedule={schedule} />
       </div>
