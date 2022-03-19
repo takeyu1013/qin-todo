@@ -39,8 +39,10 @@ const TaskCard: VFC<TaskHeaderProps> = ({ schedule }) => {
       </div>
       <div className="flex">
         <div className="pr-3">
+          {/* TODO チェックボックスコンポーネントに置き換える */}
           <PlusIcon />
         </div>
+        {/* TODO 入力エリアのコンポーネントに置き換える */}
         <input className="outline-none" placeholder="タスクを追加する" />
       </div>
     </div>
