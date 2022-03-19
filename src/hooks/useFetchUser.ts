@@ -7,7 +7,7 @@ const useFetchUser = (session: Session | null) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<ApiError | null>(null);
 
-  const getUserBySession = async (session: Session) => {
+  const fetchUserBySession = async (session: Session) => {
     const { user, error } = await supabase.auth.api.getUser(
       session.access_token
     );
@@ -20,13 +20,13 @@ const useFetchUser = (session: Session | null) => {
 
   useEffect(() => {
     if (!user && session) {
-      getUserBySession(session);
+      fetchUserBySession(session);
     } else {
       setIsLoading(false);
     }
   }, [user, session]);
 
-  return { user, error, isLoading, getUserBySession };
+  return { user, error, isLoading, fetchUserBySession };
 };
 
 export default useFetchUser;
