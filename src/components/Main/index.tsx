@@ -1,7 +1,7 @@
 import type { VFC } from "react";
 
-import type { ScheduleType } from "../TaskHeader";
-import { ScheduleType as Schedule, TaskHeader } from "../TaskHeader";
+import type { TaskHeaderProps } from "../TaskHeader";
+import { SCHEDULE_LIST, TaskHeader } from "../TaskHeader";
 
 const PlusIcon: VFC = () => {
   return (
@@ -31,7 +31,7 @@ const PlusIcon: VFC = () => {
   );
 };
 
-const TaskCard: VFC<{ schedule: ScheduleType }> = ({ schedule }) => {
+const TaskCard: VFC<TaskHeaderProps> = ({ schedule }) => {
   return (
     <div className="pl-6 pt-6" key={schedule}>
       <div className="pb-4">
@@ -50,7 +50,7 @@ const TaskCard: VFC<{ schedule: ScheduleType }> = ({ schedule }) => {
 const TaskCardList: VFC = () => {
   return (
     <div className="flex">
-      {Object.values(Schedule).map((schedule) => {
+      {Object.values(SCHEDULE_LIST).map((schedule) => {
         return (
           <div className="w-1/3" key={schedule}>
             <TaskCard schedule={schedule} />
