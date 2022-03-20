@@ -3,18 +3,23 @@ import { Task } from "./TaskItem";
 import { TaskList } from "./TaskList";
 
 export const TaskForm: VFC = () => {
-  const [text, setText] = useState("");
+  const [content, setContent] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  const input: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setText(e.target.value);
+  const handleChangeInputContent: ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    setContent(e.target.value);
   };
 
-  const add: MouseEventHandler<HTMLButtonElement> = () => {
+  const handleOnClickToAddTask: MouseEventHandler<HTMLButtonElement> = () => {
     setTasks((prevTasks) => {
-      return [...prevTasks, { id: Math.random(), label: text, isDone: false }];
+      return [
+        ...prevTasks,
+        { id: Math.random(), content: content, isDone: false },
+      ];
     });
-    setText("");
+    setContent("");
   };
 
   return (
@@ -23,12 +28,12 @@ export const TaskForm: VFC = () => {
       <div className="flex gap-x-2">
         <input
           type="text"
-          value={text}
-          onChange={input}
+          value={content}
+          onChange={handleChangeInputContent}
           className="border border-black"
         />
         <button
-          onClick={add}
+          onClick={handleOnClickToAddTask}
           className="border border-black flex-shrink-0 px-2"
         >
           追加

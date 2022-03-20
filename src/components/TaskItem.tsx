@@ -2,25 +2,25 @@ import { ChangeEventHandler, VFC } from "react";
 
 export type Task = {
   id: number;
-  label: string;
+  content: string;
   isDone: boolean;
 };
 
 type TaskItemProps = {
   task: Task;
-  toggle: ChangeEventHandler<HTMLInputElement>;
+  toggleIsDone: ChangeEventHandler<HTMLInputElement>;
 };
 
-export const TaskItem: VFC<TaskItemProps> = ({ task, toggle }) => {
+export const TaskItem: VFC<TaskItemProps> = ({ task, toggleIsDone }) => {
   return (
     <label className="flex items-center gap-x-2">
       <input
         type="checkbox"
         value={task.id}
         checked={task.isDone}
-        onChange={toggle}
+        onChange={toggleIsDone}
       />
-      <span>{task.label}</span>
+      <span>{task.content}</span>
     </label>
   );
 };
