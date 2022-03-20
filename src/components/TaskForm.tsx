@@ -1,4 +1,4 @@
-import { ChangeEventHandler, MouseEventHandler, useState, VFC } from "react";
+import { ChangeEventHandler, FormEventHandler, useState, VFC } from "react";
 import { Task } from "./TaskItem";
 import { TaskList } from "./TaskList";
 
@@ -12,7 +12,9 @@ export const TaskForm: VFC = () => {
     setContent(e.target.value);
   };
 
-  const handleOnClickToAddTask: MouseEventHandler<HTMLButtonElement> = () => {
+  const handleSubmitToAddTask: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
     setTasks((prevTasks) => {
       return [
         ...prevTasks,
@@ -23,7 +25,7 @@ export const TaskForm: VFC = () => {
   };
 
   return (
-    <div className="w-96 mx-auto p-20">
+    <form className="w-96 mx-auto p-20" onSubmit={handleSubmitToAddTask}>
       <TaskList tasks={tasks} setTasks={setTasks} />
       <div className="flex gap-x-2">
         <input
@@ -33,13 +35,7 @@ export const TaskForm: VFC = () => {
           onChange={handleChangeInputContent}
           className="border border-black"
         />
-        <button
-          onClick={handleOnClickToAddTask}
-          className="border border-black flex-shrink-0 px-2"
-        >
-          追加
-        </button>
       </div>
-    </div>
+    </form>
   );
 };
