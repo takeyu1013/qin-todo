@@ -1,26 +1,26 @@
 import { ChangeEventHandler, VFC } from "react";
 
-export type Todo = {
+export type Task = {
   id: number;
   label: string;
   isDone: boolean;
 };
 
-type ListItemProps = {
-  todo: Todo;
+type TaskItemProps = {
+  task: Task;
   toggle: ChangeEventHandler<HTMLInputElement>;
 };
 
-export const ListItem: VFC<ListItemProps> = ({ todo, toggle }) => {
+export const TaskItem: VFC<TaskItemProps> = ({ task, toggle }) => {
   return (
     <label className="flex items-center gap-x-2">
       <input
         type="checkbox"
-        value={todo.id}
-        checked={todo.isDone}
+        value={task.id}
+        checked={task.isDone}
         onChange={toggle}
       />
-      <span>{todo.label}</span>
+      <span>{task.label}</span>
     </label>
   );
 };

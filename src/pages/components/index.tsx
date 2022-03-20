@@ -1,31 +1,31 @@
 import type { NextPage } from "next";
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { Header } from "../../components/Header";
-import { ListItem, Todo } from "../../components/ListItem";
+import { TaskItem, Task } from "../../components/TaskItem";
 import { Loader } from "../../components/Loader";
 
 const ComponentsPage: NextPage = () => {
   const [text, setText] = useState("");
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const input: ChangeEventHandler<HTMLInputElement> = (e) => {
     setText(e.target.value);
   };
 
   const add: MouseEventHandler<HTMLButtonElement> = () => {
-    setTodos((prevTodos) => {
-      return [...prevTodos, { id: Math.random(), label: text, isDone: false }];
+    setTasks((prevTasks) => {
+      return [...prevTasks, { id: Math.random(), label: text, isDone: false }];
     });
     setText("");
   };
 
   const toggle: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setTodos((prevTodos) => {
-      return prevTodos.map((todo) => {
-        if (todo.id === Number(e.target.value)) {
-          return { ...todo, isDone: !todo.isDone };
+    setTasks((prevTasks) => {
+      return prevTasks.map((task) => {
+        if (task.id === Number(e.target.value)) {
+          return { ...task, isDone: !task.isDone };
         }
-        return todo;
+        return task;
       });
     });
   };
@@ -40,7 +40,7 @@ const ComponentsPage: NextPage = () => {
         }}
       />
       <div className="w-96 mx-auto p-20">
-        <h1 className="text-xl font-bold">Todo</h1>
+        <h1 className="text-xl font-bold">Task</h1>
         <div className="flex gap-x-2">
           <input
             type="text"
@@ -56,9 +56,9 @@ const ComponentsPage: NextPage = () => {
           </button>
         </div>
         <ul className="mt-4 space-y-2">
-          {todos.map((todo) => (
-            <li key={todo.id}>
-              <ListItem todo={todo} toggle={toggle} />
+          {tasks.map((task) => (
+            <li key={task.id}>
+              <TaskItem task={task} toggle={toggle} />
             </li>
           ))}
         </ul>
