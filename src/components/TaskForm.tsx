@@ -28,6 +28,7 @@ export const TaskForm: VFC = () => {
       <div className="flex gap-x-2">
         <input
           type="text"
+          placeholder="タスクを追加する"
           value={content}
           onChange={handleChangeInputContent}
           className="border border-black"
