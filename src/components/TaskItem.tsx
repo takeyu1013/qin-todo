@@ -20,7 +20,7 @@ export const TaskItem: VFC<TaskItemProps> = ({ task, toggleIsDone }) => {
         checked={task.isDone}
         onChange={toggleIsDone}
       />
-      <span>{task.content}</span>
+      {task.isDone ? <del>{task.content}</del> : <span>{task.content}</span>}
     </label>
   );
 };
