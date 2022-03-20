@@ -19,7 +19,6 @@ export const TaskForm: VFC = () => {
 
   return (
     <div className="w-96 mx-auto p-20">
-      <h1 className="text-xl font-bold">Task</h1>
       <div className="flex gap-x-2">
         <input
           type="text"
