@@ -15,6 +15,8 @@ export const TaskForm: VFC = () => {
   const handleSubmitToAddTask: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
+    if (!content) return;
+
     setTasks((prevTasks) => {
       return [
         ...prevTasks,
