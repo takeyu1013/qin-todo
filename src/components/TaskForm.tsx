@@ -19,6 +19,7 @@ export const TaskForm: VFC = () => {
 
   return (
     <div className="w-96 mx-auto p-20">
+      <TaskList tasks={tasks} setTasks={setTasks} />
       <div className="flex gap-x-2">
         <input
           type="text"
@@ -33,7 +34,6 @@ export const TaskForm: VFC = () => {
           追加
         </button>
       </div>
-      <TaskList tasks={tasks} setTasks={setTasks} />
     </div>
   );
 };
