@@ -1,9 +1,8 @@
 import type { NextPage } from "next";
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { Header } from "../../components/Header";
-import { ListItem } from "../../components/ListItem";
+import { ListItem, Todo } from "../../components/ListItem";
 import { Loader } from "../../components/Loader";
-import { Todo } from "../../components/Todo";
 
 const ComponentsPage: NextPage = () => {
   const [text, setText] = useState("");

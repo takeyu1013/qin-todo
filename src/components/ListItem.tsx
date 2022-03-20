@@ -1,5 +1,10 @@
 import { ChangeEventHandler, VFC } from "react";
-import { Todo } from "./Todo";
+
+export type Todo = {
+  id: number;
+  label: string;
+  isDone: boolean;
+};
 
 type ListItemProps = {
   todo: Todo;
