@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
 import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import { Header } from "../../components/Header";
-import { TaskItem, Task } from "../../components/TaskItem";
+import { Task } from "../../components/TaskItem";
 import { Loader } from "../../components/Loader";
+import { TaskList } from "../../components/TaskList";
 
 const ComponentsPage: NextPage = () => {
   const [text, setText] = useState("");
@@ -17,17 +18,6 @@ const ComponentsPage: NextPage = () => {
       return [...prevTasks, { id: Math.random(), label: text, isDone: false }];
     });
     setText("");
-  };
-
-  const toggle: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setTasks((prevTasks) => {
-      return prevTasks.map((task) => {
-        if (task.id === Number(e.target.value)) {
-          return { ...task, isDone: !task.isDone };
-        }
-        return task;
-      });
-    });
   };
 
   return (
@@ -55,13 +45,7 @@ const ComponentsPage: NextPage = () => {
             追加
           </button>
         </div>
-        <ul className="mt-4 space-y-2">
-          {tasks.map((task) => (
-            <li key={task.id}>
-              <TaskItem task={task} toggle={toggle} />
-            </li>
-          ))}
-        </ul>
+        <TaskList tasks={tasks} setTasks={setTasks} />
       </div>
     </>
   );
