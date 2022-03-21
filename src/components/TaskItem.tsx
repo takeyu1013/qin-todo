@@ -1,4 +1,4 @@
-import { ChangeEventHandler, VFC } from "react";
+import { ChangeEventHandler, MouseEventHandler, VFC } from "react";
 import Image from "next/image";
 
 export type Task = {
@@ -10,9 +10,24 @@ export type Task = {
 type TaskItemProps = {
   task: Task;
   toggleIsDone: ChangeEventHandler<HTMLInputElement>;
+  duplicateTask: (task: Task) => void;
 };
 
-export const TaskItem: VFC<TaskItemProps> = ({ task, toggleIsDone }) => {
+export const TaskItem: VFC<TaskItemProps> = ({
+  task,
+  toggleIsDone,
+  duplicateTask,
+}) => {
+  const handleClickToDuplicateTask: MouseEventHandler<
+    HTMLImageElement
+  > = () => {
+    duplicateTask(task);
+  };
+
+  const handleClickToDeleteTask: MouseEventHandler<HTMLImageElement> = () => {
+    console.log(task);
+  };
+
   return (
     <div className="flex items-center gap-x-2">
       <label className="flex items-center gap-x-2 mr-auto">
@@ -31,6 +46,7 @@ export const TaskItem: VFC<TaskItemProps> = ({ task, toggleIsDone }) => {
         width={14.67}
         height={14.67}
         objectFit="contain"
+        onClick={handleClickToDuplicateTask}
       />
 
       <Image
@@ -39,6 +55,7 @@ export const TaskItem: VFC<TaskItemProps> = ({ task, toggleIsDone }) => {
         width={14.67}
         height={14.67}
         objectFit="contain"
+        onClick={handleClickToDeleteTask}
       />
     </div>
   );

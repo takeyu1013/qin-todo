@@ -18,11 +18,21 @@ export const TaskList: VFC<TaskLlistProps> = ({ tasks, setTasks }) => {
     });
   };
 
+  const duplicateTask = (task: Task) => {
+    setTasks((prevTasks) => {
+      return [...prevTasks, task];
+    });
+  };
+
   return (
     <ul className="mt-4 space-y-2">
       {tasks.map((task) => (
         <li key={task.id}>
-          <TaskItem task={task} toggleIsDone={toggleIsDone} />
+          <TaskItem
+            task={task}
+            toggleIsDone={toggleIsDone}
+            duplicateTask={duplicateTask}
+          />
         </li>
       ))}
     </ul>
