@@ -20,7 +20,7 @@ export const TaskList: VFC<TaskLlistProps> = ({ tasks, setTasks }) => {
 
   const duplicateTask = (task: Task) => {
     setTasks((prevTasks) => {
-      return [...prevTasks, task];
+      return [...prevTasks, { ...task, id: Math.random() }];
     });
   };
 
