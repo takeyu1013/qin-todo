@@ -24,6 +24,12 @@ export const TaskList: VFC<TaskLlistProps> = ({ tasks, setTasks }) => {
     });
   };
 
+  const deleteTask = (task: Task) => {
+    setTasks((prevTasks) => {
+      return prevTasks.filter((prevTask) => prevTask.id !== task.id);
+    });
+  };
+
   return (
     <ul className="mt-4 space-y-2">
       {tasks.map((task) => (
@@ -32,6 +38,7 @@ export const TaskList: VFC<TaskLlistProps> = ({ tasks, setTasks }) => {
             task={task}
             toggleIsDone={toggleIsDone}
             duplicateTask={duplicateTask}
+            deleteTask={deleteTask}
           />
         </li>
       ))}

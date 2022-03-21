@@ -11,12 +11,14 @@ type TaskItemProps = {
   task: Task;
   toggleIsDone: ChangeEventHandler<HTMLInputElement>;
   duplicateTask: (task: Task) => void;
+  deleteTask: (task: Task) => void;
 };
 
 export const TaskItem: VFC<TaskItemProps> = ({
   task,
   toggleIsDone,
   duplicateTask,
+  deleteTask,
 }) => {
   const handleClickToDuplicateTask: MouseEventHandler<
     HTMLImageElement
@@ -25,7 +27,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
   };
 
   const handleClickToDeleteTask: MouseEventHandler<HTMLImageElement> = () => {
-    console.log(task);
+    deleteTask(task);
   };
 
   return (
