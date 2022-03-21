@@ -1,11 +1,6 @@
 import { ChangeEventHandler, MouseEventHandler, VFC } from "react";
 import Image from "next/image";
-
-export type Task = {
-  id: number;
-  content: string;
-  isDone: boolean;
-};
+import { Task } from "../types/task";
 
 type TaskItemProps = {
   task: Task;

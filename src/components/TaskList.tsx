@@ -1,5 +1,6 @@
 import { ChangeEventHandler, Dispatch, SetStateAction, VFC } from "react";
-import { Task, TaskItem } from "./TaskItem";
+import { Task } from "../types/task";
+import { TaskItem } from "./TaskItem";
 
 type TaskLlistProps = {
   tasks: Task[];

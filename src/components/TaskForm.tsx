@@ -1,5 +1,5 @@
 import { ChangeEventHandler, FormEventHandler, useState, VFC } from "react";
-import { Task } from "./TaskItem";
+import { Task } from "../types/task";
 import { TaskList } from "./TaskList";
 
 export const TaskForm: VFC = () => {
