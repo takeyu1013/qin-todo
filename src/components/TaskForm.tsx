@@ -6,6 +6,10 @@ export const TaskForm: VFC = () => {
   const [content, setContent] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
 
+  const eraseInputContent = () => {
+    setContent("");
+  };
+
   const handleChangeInputContent: ChangeEventHandler<HTMLInputElement> = (
     e
   ) => {
@@ -23,7 +27,7 @@ export const TaskForm: VFC = () => {
         { id: Math.random(), content: content, isDone: false },
       ];
     });
-    setContent("");
+    eraseInputContent();
   };
 
   return (
