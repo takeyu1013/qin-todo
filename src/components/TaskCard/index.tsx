@@ -43,7 +43,7 @@ export const TaskCard: VFC<Props> = ({ schedule }) => {
           </div>
         </li>
       </ul>
-      {/* TODO 新規タスクのコンポーネントに置き換える */}
+      {/* TODO <TaskForm>に置き換える */}
       <div className="flex py-2">
         {/* TODO チェックボックスコンポーネントに置き換える */}
         <div className="w-9 h-6 pr-3">
