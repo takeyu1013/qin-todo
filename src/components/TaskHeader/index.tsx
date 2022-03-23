@@ -5,9 +5,9 @@ export const SCHEDULE_LIST = {
   TOMORROW: "tomorrow",
   NEXT: "next",
 } as const;
-type ScheduleType = typeof SCHEDULE_LIST[keyof typeof SCHEDULE_LIST];
+export type ScheduleType = typeof SCHEDULE_LIST[keyof typeof SCHEDULE_LIST];
 
-export type TaskHeaderProps = {
+type TaskHeaderProps = {
   schedule: ScheduleType;
 };
 

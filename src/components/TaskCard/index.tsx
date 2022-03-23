@@ -1,10 +1,14 @@
 import type { VFC } from "react";
 import Image from "next/image";
 
-import type { TaskHeaderProps } from "../TaskHeader";
+import type { ScheduleType } from "../TaskHeader";
 import { TaskHeader } from "../TaskHeader";
 
-export const TaskCard: VFC<TaskHeaderProps> = ({ schedule }) => {
+type Props = {
+  schedule: ScheduleType;
+};
+
+export const TaskCard: VFC<Props> = ({ schedule }) => {
   return (
     <div className="pl-6 pt-6">
       <div className="pb-4">
