@@ -5,5 +5,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.format": true
+  },
+  "files.associations": {
+    "*.env*": "env"
+  },
+  "[env]": {
+    "editor.formatOnSave": false
   }
 }

@@ -12,6 +12,7 @@ export const AuthenticationPresenter: VFC<Props> = ({ supabaseClient }) => {
       onlyThirdPartyProviders={true}
       supabaseClient={supabaseClient}
       providers={["google"]}
+      redirectTo={process.env.NEXT_PUBLIC_AUTH_REDIRECT_URL}
     />
   );
 };
