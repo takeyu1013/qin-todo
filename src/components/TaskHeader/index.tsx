@@ -1,13 +1,13 @@
 import type { VFC } from "react";
 
-const ScheduleType = {
+export const SCHEDULE_LIST = {
   TODAY: "today",
   TOMORROW: "tomorrow",
   NEXT: "next",
 } as const;
-type ScheduleType = typeof ScheduleType[keyof typeof ScheduleType];
+export type ScheduleType = typeof SCHEDULE_LIST[keyof typeof SCHEDULE_LIST];
 
-type Props = {
+type TaskHeaderProps = {
   schedule: ScheduleType;
 };
 
@@ -21,7 +21,7 @@ type ThemeType = Readonly<
   >
 >;
 
-export const TaskHeader: VFC<Props> = ({ schedule }) => {
+export const TaskHeader: VFC<TaskHeaderProps> = ({ schedule }) => {
   const theme: ThemeType = {
     today: {
       title: "今日する",
