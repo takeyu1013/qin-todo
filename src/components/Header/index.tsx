@@ -27,6 +27,7 @@ export const Header = (props: Props) => {
             alt="プロフィール画像"
             width="36px"
             height="36x"
+            objectFit="contain"
           />
         </a>
       </Link>
