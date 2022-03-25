@@ -10,7 +10,7 @@ type Props = {
 
 export const TaskCard: VFC<Props> = ({ schedule }) => {
   return (
-    <div className="pt-6">
+    <div className="p-6">
       <div className="pb-4">
         <TaskHeader schedule={schedule} />
       </div>
