@@ -10,7 +10,7 @@ type Props = {
 
 export const TaskCard: VFC<Props> = ({ schedule }) => {
   return (
-    <div className="p-6">
+    <>
       <div className="pb-4">
         <TaskHeader schedule={schedule} />
       </div>
@@ -52,6 +52,6 @@ export const TaskCard: VFC<Props> = ({ schedule }) => {
         {/* TODO 入力エリアのコンポーネントに置き換える */}
         <input className="outline-none" placeholder="タスクを追加する" />
       </div>
-    </div>
+    </>
   );
 };
