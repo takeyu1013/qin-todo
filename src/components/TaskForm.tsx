@@ -35,7 +35,13 @@ export const TaskForm: VFC = () => {
     <form className="" onSubmit={handleSubmitToAddTask}>
       <TaskList tasks={tasks} setTasks={setTasks} />
       <div className="flex py-2 gap-x-2">
-        <Image src="/PlusIcon.svg" alt="+" width={24} height={24} />
+        <Image
+          src="/PlusIcon.svg"
+          alt="+"
+          width={24}
+          height={24}
+          objectFit="contain"
+        />
         <input
           type="text"
           placeholder="タスクを追加する"

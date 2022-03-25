@@ -38,6 +38,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
           alt="checkboxIcon"
           width={24}
           height={24}
+          objectFit="contain"
         />
         <input
           className="absolute opacity-0"

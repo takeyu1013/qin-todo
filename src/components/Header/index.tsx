@@ -17,6 +17,7 @@ export const Header = (props: Props) => {
             alt="Qintodoサムネイル"
             width="112px"
             height="24px"
+            objectFit="contain"
           />
         </a>
       </Link>
