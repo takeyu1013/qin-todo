@@ -21,7 +21,7 @@ export const TaskCard: VFC<Props> = ({ schedule }) => {
           <div className="flex py-2">
             <div className="w-9 h-6 pr-3">
               <Image
-                src="/EmptyCheckboxIcon.svg"
+                src="/offCheckedCheckboxIcon.svg"
                 alt="O"
                 width="24px"
                 height="24px"
@@ -34,7 +34,7 @@ export const TaskCard: VFC<Props> = ({ schedule }) => {
           <div className="flex py-2">
             <div className="w-9 h-6 pr-3">
               <Image
-                src="/EmptyCheckboxIcon.svg"
+                src="/offCheckedCheckboxIcon.svg"
                 alt="O"
                 width="24px"
                 height="24px"

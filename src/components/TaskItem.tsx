@@ -33,7 +33,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
           src={`${
             task.isDone
               ? "/onCheckedCheckboxIcon.svg"
-              : "/EmptyCheckboxIcon.svg"
+              : "/offCheckedCheckboxIcon.svg"
           }`}
           alt="checkboxIcon"
           width={24}
