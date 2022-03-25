@@ -34,7 +34,11 @@ export const TaskItem: VFC<TaskItemProps> = ({
           checked={task.isDone}
           onChange={toggleIsDone}
         />
-        {task.isDone ? <del>{task.content}</del> : <span>{task.content}</span>}
+        {task.isDone ? (
+          <p className="text-[#757575] line-through">{task.content}</p>
+        ) : (
+          <p>{task.content}</p>
+        )}
       </label>
 
       <Image
