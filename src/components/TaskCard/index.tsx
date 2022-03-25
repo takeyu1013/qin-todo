@@ -15,7 +15,9 @@ export const TaskCard: VFC<Props> = ({ schedule }) => {
       <div className="pb-4">
         <TaskHeader schedule={schedule} />
       </div>
-      <TaskForm />
+      <div className="max-w-[50%]">
+        <TaskForm />
+      </div>
     </>
   );
 };
