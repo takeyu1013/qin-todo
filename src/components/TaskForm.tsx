@@ -41,7 +41,7 @@ export const TaskForm: VFC = () => {
           placeholder="タスクを追加する"
           value={content}
           onChange={handleChangeInputContent}
-          className="outline-none h-6"
+          className="outline-none h-6 placeholder:text-[#C2C6D2]"
         />
       </div>
     </form>
