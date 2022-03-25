@@ -5,7 +5,7 @@ import { SCHEDULE_LIST } from "../TaskHeader";
 
 export const Main: VFC = () => {
   return (
-    <main className="h-screen px-20 py-10 ">
+    <main className="min-h-screen px-20 py-10">
       <div className="flex">
         {Object.values(SCHEDULE_LIST).map((schedule) => {
           return (
