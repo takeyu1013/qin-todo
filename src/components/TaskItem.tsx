@@ -28,7 +28,19 @@ export const TaskItem: VFC<TaskItemProps> = ({
   return (
     <div className="flex items-center gap-x-2">
       <label className="flex items-center gap-x-2 mr-auto">
+        <Image
+          className="hidden"
+          src={`${
+            task.isDone
+              ? "/onCheckedCheckboxIcon.svg"
+              : "/EmptyCheckboxIcon.svg"
+          }`}
+          alt="checkboxIcon"
+          width={24}
+          height={24}
+        />
         <input
+          className="absolute opacity-0"
           type="checkbox"
           value={task.id}
           checked={task.isDone}
