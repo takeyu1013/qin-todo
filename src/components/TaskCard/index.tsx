@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import type { ScheduleType } from "../TaskHeader";
 import { TaskHeader } from "../TaskHeader";
+import { TaskForm } from "../TaskForm";
 
 type Props = {
   schedule: ScheduleType;
@@ -43,15 +44,7 @@ export const TaskCard: VFC<Props> = ({ schedule }) => {
           </div>
         </li>
       </ul>
-      {/* TODO <TaskForm>に置き換える */}
-      <div className="flex py-2">
-        {/* TODO チェックボックスコンポーネントに置き換える */}
-        <div className="w-9 h-6 pr-3">
-          <Image src="/PlusIcon.svg" alt="+" width="24px" height="24px" />
-        </div>
-        {/* TODO 入力エリアのコンポーネントに置き換える */}
-        <input className="outline-none" placeholder="タスクを追加する" />
-      </div>
+      <TaskForm />
     </>
   );
 };

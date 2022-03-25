@@ -32,15 +32,17 @@ export const TaskList: VFC<TaskLlistProps> = ({ tasks, setTasks }) => {
   };
 
   return (
-    <ul className="mt-4 space-y-2">
+    <ul>
       {tasks.map((task) => (
         <li key={task.id}>
-          <TaskItem
-            task={task}
-            toggleIsDone={toggleIsDone}
-            duplicateTask={duplicateTask}
-            deleteTask={deleteTask}
-          />
+          <div className="py-2">
+            <TaskItem
+              task={task}
+              toggleIsDone={toggleIsDone}
+              duplicateTask={duplicateTask}
+              deleteTask={deleteTask}
+            />
+          </div>
         </li>
       ))}
     </ul>
