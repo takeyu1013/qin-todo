@@ -34,6 +34,7 @@ export const Header = (props: Props) => {
         }
       >
         <Menu.Item
+          className="font-bold px-6 py-3"
           icon={
             <Image src="/settings.svg" alt="設定" width="22px" height="22px" />
           }
@@ -41,6 +42,7 @@ export const Header = (props: Props) => {
           設定
         </Menu.Item>
         <Menu.Item
+          className="font-bold px-6 py-3"
           color="red"
           icon={
             <Image
