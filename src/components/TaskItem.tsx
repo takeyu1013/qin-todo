@@ -26,34 +26,59 @@ export const TaskItem: VFC<TaskItemProps> = ({
   };
 
   return (
-    <div className="flex items-center gap-x-2">
+    <div className="flex items-center gap-x-2 group">
       <label className="flex items-center gap-x-2 mr-auto">
+        <div>
+          <Image
+            src={`${
+              task.isDone
+                ? "/onCheckedCheckboxIcon.svg"
+                : "/offCheckedCheckboxIcon.svg"
+            }`}
+            alt="checkboxIcon"
+            width={24}
+            height={24}
+            layout="fixed"
+          />
+        </div>
+
         <input
+          className="absolute opacity-0"
           type="checkbox"
           value={task.id}
           checked={task.isDone}
           onChange={toggleIsDone}
         />
-        {task.isDone ? <del>{task.content}</del> : <span>{task.content}</span>}
+        {task.isDone ? (
+          <p className="text-[#C2C6D2] line-through break-all">
+            {task.content}
+          </p>
+        ) : (
+          <p className="break-all">{task.content}</p>
+        )}
       </label>
 
-      <Image
-        src="/duplicateTask.svg"
-        alt="duplicateTask"
-        width={14.67}
-        height={14.67}
-        objectFit="contain"
-        onClick={handleClickToDuplicateTask}
-      />
+      <div className="hidden group-hover:block">
+        <Image
+          src="/duplicateTask.svg"
+          alt="duplicateTask"
+          width={14.67}
+          height={14.67}
+          layout="fixed"
+          onClick={handleClickToDuplicateTask}
+        />
+      </div>
 
-      <Image
-        src="/deleteTask.svg"
-        alt="deleteTask"
-        width={14.67}
-        height={14.67}
-        objectFit="contain"
-        onClick={handleClickToDeleteTask}
-      />
+      <div className="hidden group-hover:block">
+        <Image
+          src="/deleteTask.svg"
+          alt="deleteTask"
+          width={14.67}
+          height={14.67}
+          layout="fixed"
+          onClick={handleClickToDeleteTask}
+        />
+      </div>
     </div>
   );
 };
