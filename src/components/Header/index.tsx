@@ -28,7 +28,7 @@ export const Header = (props: Props) => {
               src={props.user.image}
               alt="プロフィール画像"
               width="36px"
-              height="36x"
+              height="36px"
             />
           </button>
         }
