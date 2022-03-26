@@ -33,7 +33,13 @@ export const Header = (props: Props) => {
           </button>
         }
       >
-        <Menu.Item icon={<></>}>設定</Menu.Item>
+        <Menu.Item
+          icon={
+            <Image src="/settings.svg" alt="設定" width="22px" height="22px" />
+          }
+        >
+          設定
+        </Menu.Item>
         <Menu.Item color="red" icon={<></>}>
           ログアウト
         </Menu.Item>
