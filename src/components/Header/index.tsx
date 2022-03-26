@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, Divider, Text } from "@mantine/core";
+import { Menu } from "@mantine/core";
 
 type Props = {
   user: {
