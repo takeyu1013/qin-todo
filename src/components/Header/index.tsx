@@ -33,25 +33,9 @@ export const Header = (props: Props) => {
           </button>
         }
       >
-        <Menu.Label>Application</Menu.Label>
-        <Menu.Item icon={<></>}>Settings</Menu.Item>
-        <Menu.Item icon={<></>}>Messages</Menu.Item>
-        <Menu.Item icon={<></>}>Gallery</Menu.Item>
-        <Menu.Item
-          icon={<></>}
-          rightSection={
-            <Text size="xs" color="dimmed">
-              ⌘K
-            </Text>
-          }
-        >
-          Search
-        </Menu.Item>
-        <Divider />
-        <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item icon={<></>}>Transfer my data</Menu.Item>,
+        <Menu.Item icon={<></>}>設定</Menu.Item>
         <Menu.Item color="red" icon={<></>}>
-          Delete my account
+          ログアウト
         </Menu.Item>
       </Menu>
     </header>
