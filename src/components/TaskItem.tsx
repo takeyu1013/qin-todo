@@ -51,9 +51,11 @@ export const TaskItem: VFC<TaskItemProps> = ({
           onChange={toggleIsDone}
         />
         {task.isDone ? (
-          <p className="text-[#C2C6D2] line-through">{task.content}</p>
+          <p className="text-[#C2C6D2] line-through break-all">
+            {task.content}
+          </p>
         ) : (
-          <p>{task.content}</p>
+          <p className="break-all">{task.content}</p>
         )}
       </label>
 
