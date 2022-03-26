@@ -38,7 +38,6 @@ export const TaskItem: VFC<TaskItemProps> = ({
           alt="checkboxIcon"
           width={24}
           height={24}
-          objectFit="contain"
         />
         <input
           className="absolute opacity-0"
@@ -59,7 +58,6 @@ export const TaskItem: VFC<TaskItemProps> = ({
         alt="duplicateTask"
         width={14.67}
         height={14.67}
-        objectFit="contain"
         onClick={handleClickToDuplicateTask}
       />
 
@@ -68,7 +66,6 @@ export const TaskItem: VFC<TaskItemProps> = ({
         alt="deleteTask"
         width={14.67}
         height={14.67}
-        objectFit="contain"
         onClick={handleClickToDeleteTask}
       />
     </div>
