@@ -26,7 +26,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
   };
 
   return (
-    <div className="flex items-center gap-x-2">
+    <div className="flex items-center gap-x-2 group">
       <label className="flex items-center gap-x-2 mr-auto">
         <div>
           <Image
@@ -59,7 +59,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
         )}
       </label>
 
-      <div>
+      <div className="hidden group-hover:block">
         <Image
           src="/duplicateTask.svg"
           alt="duplicateTask"
@@ -70,7 +70,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
         />
       </div>
 
-      <div>
+      <div className="hidden group-hover:block">
         <Image
           src="/deleteTask.svg"
           alt="deleteTask"
