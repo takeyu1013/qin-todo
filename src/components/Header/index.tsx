@@ -33,6 +33,7 @@ export const Header = (props: Props) => {
               width="36px"
               height="36px"
               layout="fixed"
+              objectFit="contain"
             />
           </button>
         }
