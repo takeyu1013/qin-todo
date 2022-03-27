@@ -1,6 +1,4 @@
 import type { VFC } from "react";
-import Image from "next/image";
-
 import type { ScheduleType } from "../TaskHeader";
 import { TaskHeader } from "../TaskHeader";
 import { TaskForm } from "../TaskForm";
