@@ -58,7 +58,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
         </p>
       </label>
 
-      <div className="hidden group-hover:block">
+      <div className="invisible group-hover:visible">
         <Image
           src="/duplicateTask.svg"
           alt="duplicateTask"
@@ -69,7 +69,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
         />
       </div>
 
-      <div className="hidden group-hover:block">
+      <div className="invisible group-hover:visible">
         <Image
           src="/deleteTask.svg"
           alt="deleteTask"
