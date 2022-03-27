@@ -47,6 +47,7 @@ export const Header = (props: Props) => {
                 alt="設定"
                 width="22px"
                 height="22px"
+                layout="fixed"
               />
             </div>
           }
@@ -63,6 +64,7 @@ export const Header = (props: Props) => {
                 alt="ログアウト"
                 width="22px"
                 height="22px"
+                layout="fixed"
               />
             </div>
           }
