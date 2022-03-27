@@ -49,13 +49,13 @@ export const TaskItem: VFC<TaskItemProps> = ({
           checked={task.isDone}
           onChange={toggleIsDone}
         />
-        {task.isDone ? (
-          <p className="text-[#C2C6D2] line-through break-all">
-            {task.content}
-          </p>
-        ) : (
-          <p className="break-all">{task.content}</p>
-        )}
+        <p
+          className={`break-all ${
+            task.isDone ? "line-through text-[#C2C6D2]" : ""
+          }`}
+        >
+          {task.content}
+        </p>
       </label>
 
       <div className="hidden group-hover:block">
