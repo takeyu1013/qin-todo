@@ -38,7 +38,14 @@ export const Header = (props: Props) => {
         <Menu.Item
           className={className}
           icon={
-            <Image src="/settings.svg" alt="設定" width="22px" height="22px" />
+            <div className="next-image-space-removal-wrapper">
+              <Image
+                src="/settings.svg"
+                alt="設定"
+                width="22px"
+                height="22px"
+              />
+            </div>
           }
         >
           設定
@@ -47,12 +54,14 @@ export const Header = (props: Props) => {
           className={className}
           color="red"
           icon={
-            <Image
-              src="/logout.svg"
-              alt="ログアウト"
-              width="22px"
-              height="22px"
-            />
+            <div className="next-image-space-removal-wrapper">
+              <Image
+                src="/logout.svg"
+                alt="ログアウト"
+                width="22px"
+                height="22px"
+              />
+            </div>
           }
         >
           ログアウト

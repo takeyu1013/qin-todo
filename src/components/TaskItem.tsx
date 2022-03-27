@@ -28,7 +28,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
   return (
     <div className="flex items-center gap-x-2 group">
       <label className="flex items-center gap-x-2 mr-auto">
-        <div>
+        <div className="next-image-space-removal-wrapper">
           <Image
             src={`${
               task.isDone
