@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Menu } from "@mantine/core";
 
 type Props = {
   user: {
@@ -8,6 +9,8 @@ type Props = {
 };
 
 export const Header = (props: Props) => {
+  const className = "font-bold px-6 py-3";
+
   return (
     <header className="flex justify-between items-center px-[196px] h-20 w-full bg-white">
       <Link href="/">
@@ -20,16 +23,41 @@ export const Header = (props: Props) => {
           />
         </a>
       </Link>
-      <Link href="#">
-        <a>
-          <Image
-            src={props.user.image}
-            alt="プロフィール画像"
-            width="36px"
-            height="36x"
-          />
-        </a>
-      </Link>
+      <Menu
+        control={
+          <button>
+            <Image
+              src={props.user.image}
+              alt="プロフィール画像"
+              width="36px"
+              height="36px"
+            />
+          </button>
+        }
+      >
+        <Menu.Item
+          className={className}
+          icon={
+            <Image src="/settings.svg" alt="設定" width="22px" height="22px" />
+          }
+        >
+          設定
+        </Menu.Item>
+        <Menu.Item
+          className={className}
+          color="red"
+          icon={
+            <Image
+              src="/logout.svg"
+              alt="ログアウト"
+              width="22px"
+              height="22px"
+            />
+          }
+        >
+          ログアウト
+        </Menu.Item>
+      </Menu>
     </header>
   );
 };
