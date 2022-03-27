@@ -14,7 +14,7 @@ export const Header = (props: Props) => {
   return (
     <header className="flex justify-between items-center px-[196px] h-20 w-full bg-white">
       <Link href="/">
-        <a>
+        <a className="next-image-space-removal-wrapper">
           <Image
             src="/QinToDo.svg"
             alt="Qintodoサムネイル"
@@ -26,7 +26,7 @@ export const Header = (props: Props) => {
       </Link>
       <Menu
         control={
-          <button>
+          <div className="next-image-space-removal-wrapper">
             <Image
               src={props.user.image}
               alt="プロフィール画像"
@@ -35,7 +35,7 @@ export const Header = (props: Props) => {
               layout="fixed"
               objectFit="contain"
             />
-          </button>
+          </div>
         }
       >
         <Menu.Item
