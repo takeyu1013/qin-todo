@@ -14,31 +14,42 @@ export const Header = (props: Props) => {
   return (
     <header className="flex justify-between items-center px-[196px] h-20 w-full bg-white">
       <Link href="/">
-        <a>
+        <a className="next-image-space-removal-wrapper">
           <Image
             src="/QinToDo.svg"
             alt="Qintodoサムネイル"
             width="112px"
             height="24px"
+            layout="fixed"
           />
         </a>
       </Link>
       <Menu
         control={
-          <button>
+          <div className="next-image-space-removal-wrapper">
             <Image
               src={props.user.image}
               alt="プロフィール画像"
               width="36px"
               height="36px"
+              layout="fixed"
+              objectFit="contain"
             />
-          </button>
+          </div>
         }
       >
         <Menu.Item
           className={className}
           icon={
-            <Image src="/settings.svg" alt="設定" width="22px" height="22px" />
+            <div className="next-image-space-removal-wrapper">
+              <Image
+                src="/settings.svg"
+                alt="設定"
+                width="22px"
+                height="22px"
+                layout="fixed"
+              />
+            </div>
           }
         >
           設定
@@ -47,12 +58,15 @@ export const Header = (props: Props) => {
           className={className}
           color="red"
           icon={
-            <Image
-              src="/logout.svg"
-              alt="ログアウト"
-              width="22px"
-              height="22px"
-            />
+            <div className="next-image-space-removal-wrapper">
+              <Image
+                src="/logout.svg"
+                alt="ログアウト"
+                width="22px"
+                height="22px"
+                layout="fixed"
+              />
+            </div>
           }
         >
           ログアウト

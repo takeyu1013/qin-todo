@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .next-image-space-removal-wrapper {
+    letter-spacing: 0;
+    word-spacing: 0;
+    font-size: 0;
+  }
+}

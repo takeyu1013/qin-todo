@@ -32,10 +32,10 @@ export const TaskForm: VFC = () => {
   };
 
   return (
-    <form className="" onSubmit={handleSubmitToAddTask}>
+    <form onSubmit={handleSubmitToAddTask}>
       <TaskList tasks={tasks} setTasks={setTasks} />
       <div className="flex py-2 gap-x-2">
-        <div>
+        <div className="next-image-space-removal-wrapper">
           <Image
             src="/PlusIcon.svg"
             alt="+"
