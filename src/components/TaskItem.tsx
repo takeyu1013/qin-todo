@@ -1,28 +1,26 @@
-import { ChangeEventHandler, MouseEventHandler, VFC } from "react";
+import { MouseEventHandler, VFC } from "react";
 import Image from "next/image";
 import { Task } from "../types/task";
+import { UseFormReturnType } from "@mantine/form/lib/use-form";
+import { FormList } from "@mantine/form/lib/form-list/form-list";
 
 type TaskItemProps = {
   task: Task;
-  toggleIsDone: ChangeEventHandler<HTMLInputElement>;
-  duplicateTask: (task: Task) => void;
-  deleteTask: (task: Task) => void;
+  index: number;
+  taskListForm: UseFormReturnType<{
+    tasks: FormList<Task>;
+  }>;
 };
 
-export const TaskItem: VFC<TaskItemProps> = ({
-  task,
-  toggleIsDone,
-  duplicateTask,
-  deleteTask,
-}) => {
+export const TaskItem: VFC<TaskItemProps> = ({ task, index, taskListForm }) => {
   const handleClickToDuplicateTask: MouseEventHandler<
     HTMLImageElement
   > = () => {
-    duplicateTask(task);
+    taskListForm.addListItem("tasks", { ...task, id: Math.random() });
   };
 
   const handleClickToDeleteTask: MouseEventHandler<HTMLImageElement> = () => {
-    deleteTask(task);
+    taskListForm.removeListItem("tasks", index);
   };
 
   return (
@@ -45,9 +43,9 @@ export const TaskItem: VFC<TaskItemProps> = ({
         <input
           className="absolute opacity-0"
           type="checkbox"
-          value={task.id}
-          checked={task.isDone}
-          onChange={toggleIsDone}
+          {...taskListForm.getListInputProps("tasks", index, "isDone", {
+            type: "checkbox",
+          })}
         />
         <p
           className={`break-all ${
