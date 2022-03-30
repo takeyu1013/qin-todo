@@ -4,6 +4,10 @@ import { TaskList } from "./TaskList";
 import Image from "next/image";
 import { useForm, formList } from "@mantine/form";
 
+const initializedTask = (id: number): Task => {
+  return { id, content: "", isDone: false };
+};
+
 export const TaskForm: VFC = () => {
   const taskListForm = useForm({
     initialValues: {
@@ -13,7 +17,7 @@ export const TaskForm: VFC = () => {
   type TaskListFormValues = typeof taskListForm.values;
 
   const taskForm = useForm<Task>({
-    initialValues: { id: Math.random(), content: "", isDone: false },
+    initialValues: initializedTask(Math.random()),
   });
   type TaskFormValues = typeof taskForm.values;
 
@@ -21,9 +25,7 @@ export const TaskForm: VFC = () => {
     if (task.content === "") return;
 
     taskListForm.addListItem("tasks", {
-      id: Math.random(),
-      content: task.content,
-      isDone: false,
+      ...task,
     });
 
     taskForm.reset();
