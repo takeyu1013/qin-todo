@@ -4,7 +4,7 @@ import { TaskList } from "./TaskList";
 import Image from "next/image";
 import { useForm, formList } from "@mantine/form";
 
-const initializedTask = (id: number): Task => {
+export const initializedTask = (id: number): Task => {
   return { id, content: "", isDone: false };
 };
 

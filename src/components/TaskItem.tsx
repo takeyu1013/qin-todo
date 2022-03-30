@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Task } from "../types/task";
 import { UseFormReturnType } from "@mantine/form/lib/use-form";
 import { FormList } from "@mantine/form/lib/form-list/form-list";
+import { initializedTask } from "./TaskForm";
 
 type TaskItemProps = {
   task: Task;
@@ -16,7 +17,10 @@ export const TaskItem: VFC<TaskItemProps> = ({ task, index, taskListForm }) => {
   const handleClickToDuplicateTask: MouseEventHandler<
     HTMLImageElement
   > = () => {
-    taskListForm.addListItem("tasks", { ...task, id: Math.random() });
+    taskListForm.addListItem("tasks", {
+      ...initializedTask(Math.random()),
+      content: task.content,
+    });
   };
 
   const handleClickToDeleteTask: MouseEventHandler<HTMLImageElement> = () => {
