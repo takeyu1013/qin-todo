@@ -1,47 +1,23 @@
-import { ChangeEventHandler, Dispatch, SetStateAction, VFC } from "react";
+import { FormList } from "@mantine/form/lib/form-list/form-list";
+import { UseFormReturnType } from "@mantine/form/lib/use-form";
+import { VFC } from "react";
 import { Task } from "../types/task";
 import { TaskItem } from "./TaskItem";
 
 type TaskLlistProps = {
   tasks: Task[];
-  setTasks: Dispatch<SetStateAction<Task[]>>;
+  taskListForm: UseFormReturnType<{
+    tasks: FormList<Task>;
+  }>;
 };
 
-export const TaskList: VFC<TaskLlistProps> = ({ tasks, setTasks }) => {
-  const toggleIsDone: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setTasks((prevTasks) => {
-      return prevTasks.map((task) => {
-        if (task.id === Number(e.target.value)) {
-          return { ...task, isDone: !task.isDone };
-        }
-        return task;
-      });
-    });
-  };
-
-  const duplicateTask = (task: Task) => {
-    setTasks((prevTasks) => {
-      return [...prevTasks, { ...task, id: Math.random(), isDone: false }];
-    });
-  };
-
-  const deleteTask = (task: Task) => {
-    setTasks((prevTasks) => {
-      return prevTasks.filter((prevTask) => prevTask.id !== task.id);
-    });
-  };
-
+export const TaskList: VFC<TaskLlistProps> = ({ tasks, taskListForm }) => {
   return (
     <ul>
-      {tasks.map((task) => (
+      {tasks.map((task, index) => (
         <li key={task.id}>
           <div className="py-2">
-            <TaskItem
-              task={task}
-              toggleIsDone={toggleIsDone}
-              duplicateTask={duplicateTask}
-              deleteTask={deleteTask}
-            />
+            <TaskItem task={task} index={index} taskListForm={taskListForm} />
           </div>
         </li>
       ))}
