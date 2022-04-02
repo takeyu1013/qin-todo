@@ -56,7 +56,7 @@ export const TaskItem: VFC<TaskItemProps> = ({ task, index, taskListForm }) => {
       <input
         type="text"
         {...taskListForm.getListInputProps("tasks", index, "content")}
-        className={`w-full break-all ${
+        className={`w-full outline-none break-all ${
           task.isDone ? "line-through text-[#C2C6D2]" : ""
         }`}
       />
