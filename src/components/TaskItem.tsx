@@ -51,14 +51,15 @@ export const TaskItem: VFC<TaskItemProps> = ({ task, index, taskListForm }) => {
             type: "checkbox",
           })}
         />
-        <p
-          className={`break-all ${
-            task.isDone ? "line-through text-[#C2C6D2]" : ""
-          }`}
-        >
-          {task.content}
-        </p>
       </label>
+
+      <input
+        type="text"
+        {...taskListForm.getListInputProps("tasks", index, "content")}
+        className={`w-full break-all ${
+          task.isDone ? "line-through text-[#C2C6D2]" : ""
+        }`}
+      />
 
       <div className="next-image-space-removal-wrapper invisible group-hover:visible">
         <Image
@@ -81,6 +82,8 @@ export const TaskItem: VFC<TaskItemProps> = ({ task, index, taskListForm }) => {
           onClick={handleClickToDeleteTask}
         />
       </div>
+
+      <button className="invisible" />
     </div>
   );
 };

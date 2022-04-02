@@ -31,9 +31,13 @@ export const TaskForm: VFC = () => {
     taskForm.reset();
   };
 
+  const handleSubmitToEditTask = ({ tasks }: TaskListFormValues) => {
+    console.table(tasks);
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={taskListForm.onSubmit(handleSubmitToEditTask)}>
         <TaskList
           tasks={taskListForm.values.tasks}
           taskListForm={taskListForm}
