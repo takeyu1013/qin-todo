@@ -4,14 +4,14 @@ import { VFC } from "react";
 import { Task } from "../types/task";
 import { TaskItem } from "./TaskItem";
 
-type TaskLlistProps = {
+type TaskListProps = {
   tasks: Task[];
   taskListForm: UseFormReturnType<{
     tasks: FormList<Task>;
   }>;
 };
 
-export const TaskList: VFC<TaskLlistProps> = ({ tasks, taskListForm }) => {
+export const TaskList: VFC<TaskListProps> = ({ tasks, taskListForm }) => {
   return (
     <ul>
       {tasks.map((task, index) => (
