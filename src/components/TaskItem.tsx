@@ -60,12 +60,12 @@ export const TaskItem: VFC<TaskItemProps> = ({
       </label>
 
       <input
-        type="text"
-        onBlur={taskListForm.onSubmit(handleSubmitToEditTask)}
-        {...taskListForm.getListInputProps("tasks", index, "content")}
         className={`w-full outline-none break-all ${
           task.isDone ? "line-through text-[#C2C6D2]" : ""
         }`}
+        type="text"
+        onBlur={taskListForm.onSubmit(handleSubmitToEditTask)}
+        {...taskListForm.getListInputProps("tasks", index, "content")}
       />
 
       <div className="next-image-space-removal-wrapper invisible group-hover:visible">
