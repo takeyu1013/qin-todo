@@ -60,7 +60,7 @@ export const TaskForm: VFC = () => {
             type="text"
             placeholder="タスクを追加する"
             {...taskForm.getInputProps("content")}
-            className="outline-none h-6 placeholder:text-[#C2C6D2]"
+            className="w-full outline-none h-6 placeholder:text-[#C2C6D2]"
           />
         </div>
       </form>
