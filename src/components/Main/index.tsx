@@ -9,7 +9,7 @@ export const Main: VFC = () => {
       <div className="flex">
         {Object.values(SCHEDULE_LIST).map((schedule) => {
           return (
-            <div className="p-6 w-1/3" key={schedule}>
+            <div className="p-6 w-1/3 min-w-max" key={schedule}>
               <TaskCard schedule={schedule} />
             </div>
           );
