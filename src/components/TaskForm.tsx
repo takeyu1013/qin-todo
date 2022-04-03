@@ -41,6 +41,7 @@ export const TaskForm: VFC = () => {
         <TaskList
           tasks={taskListForm.values.tasks}
           taskListForm={taskListForm}
+          handleSubmitToEditTask={handleSubmitToEditTask}
         />
       </form>
 

@@ -9,15 +9,25 @@ type TaskListProps = {
   taskListForm: UseFormReturnType<{
     tasks: FormList<Task>;
   }>;
+  handleSubmitToEditTask: ({ tasks }: { tasks: FormList<Task> }) => void;
 };
 
-export const TaskList: VFC<TaskListProps> = ({ tasks, taskListForm }) => {
+export const TaskList: VFC<TaskListProps> = ({
+  tasks,
+  taskListForm,
+  handleSubmitToEditTask,
+}) => {
   return (
     <ul>
       {tasks.map((task, index) => (
         <li key={task.id}>
           <div className="py-2">
-            <TaskItem task={task} index={index} taskListForm={taskListForm} />
+            <TaskItem
+              task={task}
+              index={index}
+              taskListForm={taskListForm}
+              handleSubmitToEditTask={handleSubmitToEditTask}
+            />
           </div>
         </li>
       ))}
