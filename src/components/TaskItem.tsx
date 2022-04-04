@@ -11,9 +11,15 @@ type TaskItemProps = {
   taskListForm: UseFormReturnType<{
     tasks: FormList<Task>;
   }>;
+  handleSubmitToEditTask: ({ tasks }: { tasks: FormList<Task> }) => void;
 };
 
-export const TaskItem: VFC<TaskItemProps> = ({ task, index, taskListForm }) => {
+export const TaskItem: VFC<TaskItemProps> = ({
+  task,
+  index,
+  taskListForm,
+  handleSubmitToEditTask,
+}) => {
   const handleClickToDuplicateTask: MouseEventHandler<
     HTMLImageElement
   > = () => {
@@ -51,14 +57,16 @@ export const TaskItem: VFC<TaskItemProps> = ({ task, index, taskListForm }) => {
             type: "checkbox",
           })}
         />
-        <p
-          className={`break-all ${
-            task.isDone ? "line-through text-[#C2C6D2]" : ""
-          }`}
-        >
-          {task.content}
-        </p>
       </label>
+
+      <input
+        className={`w-full outline-none break-all ${
+          task.isDone ? "line-through text-[#C2C6D2]" : ""
+        }`}
+        type="text"
+        onBlur={taskListForm.onSubmit(handleSubmitToEditTask)}
+        {...taskListForm.getListInputProps("tasks", index, "content")}
+      />
 
       <div className="next-image-space-removal-wrapper invisible group-hover:visible">
         <Image
@@ -81,6 +89,8 @@ export const TaskItem: VFC<TaskItemProps> = ({ task, index, taskListForm }) => {
           onClick={handleClickToDeleteTask}
         />
       </div>
+
+      <button className="invisible" />
     </div>
   );
 };

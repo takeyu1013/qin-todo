@@ -31,12 +31,17 @@ export const TaskForm: VFC = () => {
     taskForm.reset();
   };
 
+  const handleSubmitToEditTask = ({ tasks }: TaskListFormValues) => {
+    console.table(tasks);
+  };
+
   return (
-    <>
-      <form>
+    <div className="w-max">
+      <form onSubmit={taskListForm.onSubmit(handleSubmitToEditTask)}>
         <TaskList
           tasks={taskListForm.values.tasks}
           taskListForm={taskListForm}
+          handleSubmitToEditTask={handleSubmitToEditTask}
         />
       </form>
 
@@ -53,13 +58,13 @@ export const TaskForm: VFC = () => {
           </div>
 
           <input
+            className="w-full outline-none h-6 placeholder:text-[#C2C6D2]"
             type="text"
             placeholder="タスクを追加する"
             {...taskForm.getInputProps("content")}
-            className="outline-none h-6 placeholder:text-[#C2C6D2]"
           />
         </div>
       </form>
-    </>
+    </div>
   );
 };
