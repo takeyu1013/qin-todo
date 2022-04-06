@@ -5,6 +5,9 @@ import { UseFormReturnType } from "@mantine/form/lib/use-form";
 import { FormList } from "@mantine/form/lib/form-list/form-list";
 import { initializedTask } from "./TaskForm";
 import { v4 as uuidv4 } from "uuid";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { GripVertical } from "tabler-icons-react";
 
 type TaskItemProps = {
   task: Task;
@@ -34,8 +37,29 @@ export const TaskItem: VFC<TaskItemProps> = ({
     taskListForm.removeListItem("tasks", index);
   };
 
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: task.id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
   return (
-    <div className="flex items-center gap-x-2 group">
+    <div
+      className="flex items-center gap-x-2 group"
+      ref={setNodeRef}
+      style={style}
+    >
+      <GripVertical
+        className="invisible group-hover:visible"
+        size={24}
+        strokeWidth={2}
+        color={"#C2C6D2"}
+        {...attributes}
+        {...listeners}
+      />
+
       <label className="flex items-center gap-x-2 mr-auto">
         <div className="next-image-space-removal-wrapper">
           <Image
