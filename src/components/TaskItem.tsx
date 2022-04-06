@@ -51,38 +51,40 @@ export const TaskItem: VFC<TaskItemProps> = ({
       ref={setNodeRef}
       style={style}
     >
-      <GripVertical
-        className="invisible group-hover:visible"
-        size={24}
-        strokeWidth={2}
-        color={"#C2C6D2"}
-        {...attributes}
-        {...listeners}
-      />
-
-      <label className="flex items-center gap-x-2 mr-auto">
-        <div className="next-image-space-removal-wrapper">
-          <Image
-            src={`${
-              task.isDone
-                ? "/onCheckedCheckboxIcon.svg"
-                : "/offCheckedCheckboxIcon.svg"
-            }`}
-            alt="checkboxIcon"
-            width={24}
-            height={24}
-            layout="fixed"
-          />
-        </div>
-
-        <input
-          className="absolute opacity-0"
-          type="checkbox"
-          {...taskListForm.getListInputProps("tasks", index, "isDone", {
-            type: "checkbox",
-          })}
+      <div className="flex items-center gap-x-2 mr-auto">
+        <GripVertical
+          className="invisible group-hover:visible"
+          size={24}
+          strokeWidth={2}
+          color={"#C2C6D2"}
+          {...attributes}
+          {...listeners}
         />
-      </label>
+
+        <label>
+          <div className="next-image-space-removal-wrapper">
+            <Image
+              src={`${
+                task.isDone
+                  ? "/onCheckedCheckboxIcon.svg"
+                  : "/offCheckedCheckboxIcon.svg"
+              }`}
+              alt="checkboxIcon"
+              width={24}
+              height={24}
+              layout="fixed"
+            />
+          </div>
+
+          <input
+            className="absolute opacity-0"
+            type="checkbox"
+            {...taskListForm.getListInputProps("tasks", index, "isDone", {
+              type: "checkbox",
+            })}
+          />
+        </label>
+      </div>
 
       <input
         className={`w-full bg-transparent outline-none break-all ${
