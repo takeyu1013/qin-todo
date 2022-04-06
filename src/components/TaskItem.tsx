@@ -4,6 +4,7 @@ import { Task } from "../types/task";
 import { UseFormReturnType } from "@mantine/form/lib/use-form";
 import { FormList } from "@mantine/form/lib/form-list/form-list";
 import { initializedTask } from "./TaskForm";
+import { v4 as uuidv4 } from "uuid";
 
 type TaskItemProps = {
   task: Task;
@@ -24,7 +25,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
     HTMLImageElement
   > = () => {
     taskListForm.addListItem("tasks", {
-      ...initializedTask(Math.random()),
+      ...initializedTask(uuidv4()),
       content: task.content,
     });
   };
