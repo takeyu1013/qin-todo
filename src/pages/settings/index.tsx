@@ -5,47 +5,21 @@ import Link from "next/link";
 import { createStyles, Box, Text, Group } from "@mantine/core";
 
 const props = {
-  active: "#overlays",
   links: [
     {
-      label: "Usage",
+      label: "プロフィール",
       link: "#usage",
-      order: 1,
+      order: 0,
     },
     {
-      label: "Position and placement",
+      label: "アカウント",
       link: "#position",
-      order: 1,
+      order: 0,
     },
     {
-      label: "With other overlays",
+      label: "テーマ",
       link: "#overlays",
-      order: 1,
-    },
-    {
-      label: "Manage focus",
-      link: "#focus",
-      order: 1,
-    },
-    {
-      label: "Examples",
-      link: "#1",
-      order: 1,
-    },
-    {
-      label: "Show on focus",
-      link: "#2",
-      order: 2,
-    },
-    {
-      label: "Show on hover",
-      link: "#3",
-      order: 2,
-    },
-    {
-      label: "With form",
-      link: "#4",
-      order: 2,
+      order: 0,
     },
   ],
 };
@@ -57,13 +31,12 @@ const useStyles = createStyles((theme) => ({
     textDecoration: "none",
     color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
     lineHeight: 1.2,
-    fontSize: theme.fontSizes.sm,
-    padding: theme.spacing.xs,
+    fontSize: theme.fontSizes.md,
+    fontWeight: "bold",
+    paddingTop: theme.spacing.md,
+    paddingBottom: theme.spacing.md,
     borderTopRightRadius: theme.radius.sm,
     borderBottomRightRadius: theme.radius.sm,
-    borderLeft: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
-    }`,
 
     "&:hover": {
       backgroundColor:
@@ -112,9 +85,9 @@ export function TableOfContents({ links, active }: TableOfContentsProps) {
   ));
 
   return (
-    <div>
-      <Group mb="md">
-        <Text>Table of contents</Text>
+    <div className="max-w-2xl mx-auto p-6">
+      <Group mb="xs">
+        <Text className="text-gray-400">設定</Text>
       </Group>
       {items}
     </div>
