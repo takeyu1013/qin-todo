@@ -43,6 +43,7 @@ export const TaskForm: VFC = () => {
           taskListForm={taskListForm}
           handleSubmitToEditTask={handleSubmitToEditTask}
         />
+        <button className="block invisible" />
       </form>
 
       <form onSubmit={taskForm.onSubmit(handleSubmitToAddTask)}>

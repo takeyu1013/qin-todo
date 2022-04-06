@@ -89,8 +89,6 @@ export const TaskItem: VFC<TaskItemProps> = ({
           onClick={handleClickToDeleteTask}
         />
       </div>
-
-      <button className="invisible" />
     </div>
   );
 };
