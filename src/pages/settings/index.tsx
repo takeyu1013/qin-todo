@@ -107,7 +107,7 @@ const SettingsPage: NextPage = () => {
           <h1 className="font-bold">設定</h1>
           <div className="w-9" />
         </div>
-        <TableOfContents links={props.links} active={props.active} />
+        <TableOfContents links={props.links} active="" />
       </div>
     </>
   );
