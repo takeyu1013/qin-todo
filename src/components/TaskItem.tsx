@@ -85,7 +85,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
       </label>
 
       <input
-        className={`w-full outline-none break-all ${
+        className={`w-full bg-transparent outline-none break-all ${
           task.isDone ? "line-through text-[#C2C6D2]" : ""
         }`}
         type="text"
