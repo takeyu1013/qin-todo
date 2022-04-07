@@ -53,7 +53,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
     >
       <div className="flex items-center gap-x-2 mr-auto">
         <GripVertical
-          className="invisible group-hover:visible absolute -left-6"
+          className="opacity-0 group-hover:opacity-100 absolute -left-6"
           size={24}
           strokeWidth={2}
           color={"#C2C6D2"}
