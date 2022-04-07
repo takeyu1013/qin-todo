@@ -3,8 +3,9 @@ import { Task } from "../types/task";
 import { TaskList } from "./TaskList";
 import Image from "next/image";
 import { useForm, formList } from "@mantine/form";
+import { v4 as uuidv4 } from "uuid";
 
-export const initializedTask = (id: number): Task => {
+export const initializedTask = (id: string): Task => {
   return { id, content: "", isDone: false };
 };
 
@@ -17,7 +18,7 @@ export const TaskForm: VFC = () => {
   type TaskListFormValues = typeof taskListForm.values;
 
   const taskForm = useForm<Task>({
-    initialValues: initializedTask(Math.random()),
+    initialValues: initializedTask(uuidv4()),
   });
   type TaskFormValues = typeof taskForm.values;
 
@@ -43,6 +44,7 @@ export const TaskForm: VFC = () => {
           taskListForm={taskListForm}
           handleSubmitToEditTask={handleSubmitToEditTask}
         />
+        <button className="block invisible" />
       </form>
 
       <form onSubmit={taskForm.onSubmit(handleSubmitToAddTask)}>

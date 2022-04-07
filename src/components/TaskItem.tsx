@@ -4,6 +4,10 @@ import { Task } from "../types/task";
 import { UseFormReturnType } from "@mantine/form/lib/use-form";
 import { FormList } from "@mantine/form/lib/form-list/form-list";
 import { initializedTask } from "./TaskForm";
+import { v4 as uuidv4 } from "uuid";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { GripVertical } from "tabler-icons-react";
 
 type TaskItemProps = {
   task: Task;
@@ -24,7 +28,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
     HTMLImageElement
   > = () => {
     taskListForm.addListItem("tasks", {
-      ...initializedTask(Math.random()),
+      ...initializedTask(uuidv4()),
       content: task.content,
     });
   };
@@ -33,34 +37,57 @@ export const TaskItem: VFC<TaskItemProps> = ({
     taskListForm.removeListItem("tasks", index);
   };
 
-  return (
-    <div className="flex items-center gap-x-2 group">
-      <label className="flex items-center gap-x-2 mr-auto">
-        <div className="next-image-space-removal-wrapper">
-          <Image
-            src={`${
-              task.isDone
-                ? "/onCheckedCheckboxIcon.svg"
-                : "/offCheckedCheckboxIcon.svg"
-            }`}
-            alt="checkboxIcon"
-            width={24}
-            height={24}
-            layout="fixed"
-          />
-        </div>
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: task.id });
 
-        <input
-          className="absolute opacity-0"
-          type="checkbox"
-          {...taskListForm.getListInputProps("tasks", index, "isDone", {
-            type: "checkbox",
-          })}
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div
+      className="flex items-center gap-x-2 group relative"
+      ref={setNodeRef}
+      style={style}
+    >
+      <div className="flex items-center gap-x-2 mr-auto">
+        <GripVertical
+          className="opacity-0 group-hover:opacity-100 absolute -left-6"
+          size={24}
+          strokeWidth={2}
+          color={"#C2C6D2"}
+          {...attributes}
+          {...listeners}
         />
-      </label>
+
+        <label>
+          <div className="next-image-space-removal-wrapper">
+            <Image
+              src={`${
+                task.isDone
+                  ? "/onCheckedCheckboxIcon.svg"
+                  : "/offCheckedCheckboxIcon.svg"
+              }`}
+              alt="checkboxIcon"
+              width={24}
+              height={24}
+              layout="fixed"
+            />
+          </div>
+
+          <input
+            className="absolute opacity-0"
+            type="checkbox"
+            {...taskListForm.getListInputProps("tasks", index, "isDone", {
+              type: "checkbox",
+            })}
+          />
+        </label>
+      </div>
 
       <input
-        className={`w-full outline-none break-all ${
+        className={`w-full bg-transparent outline-none break-all ${
           task.isDone ? "line-through text-[#C2C6D2]" : ""
         }`}
         type="text"
@@ -89,8 +116,6 @@ export const TaskItem: VFC<TaskItemProps> = ({
           onClick={handleClickToDeleteTask}
         />
       </div>
-
-      <button className="invisible" />
     </div>
   );
 };
