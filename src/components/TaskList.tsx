@@ -23,21 +23,20 @@ export const TaskList: VFC<TaskListProps> = ({
     const { active, over } = event;
 
     if (!over) return;
+    if (active.id === over.id) return;
 
-    if (active.id !== over.id) {
-      const activeIndex = taskListForm.values.tasks.findIndex(
-        (task) => task.id === active.id
-      );
+    const activeIndex = taskListForm.values.tasks.findIndex(
+      (task) => task.id === active.id
+    );
 
-      const overIndex = taskListForm.values.tasks.findIndex(
-        (task) => task.id === over.id
-      );
+    const overIndex = taskListForm.values.tasks.findIndex(
+      (task) => task.id === over.id
+    );
 
-      taskListForm.reorderListItem("tasks", {
-        from: activeIndex,
-        to: overIndex,
-      });
-    }
+    taskListForm.reorderListItem("tasks", {
+      from: activeIndex,
+      to: overIndex,
+    });
   };
 
   return (
