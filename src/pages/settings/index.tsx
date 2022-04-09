@@ -4,32 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { Box, Text, Group } from "@mantine/core";
 
-const props = {
-  links: [
-    {
-      label: "プロフィール",
-      link: "#usage",
-      order: 0,
-    },
-    {
-      label: "アカウント",
-      link: "#position",
-      order: 0,
-    },
-    {
-      label: "テーマ",
-      link: "#overlays",
-      order: 0,
-    },
-  ],
+const LINKS = [
+  {
+    label: "プロフィール",
+    link: "#usage",
+  },
+  {
+    label: "アカウント",
+    link: "#position",
+  },
+  {
+    label: "テーマ",
+    link: "#overlays",
+  },
+];
+
+type TableOfContentsProps = {
+  links: { label: string; link: string }[];
 };
 
-interface TableOfContentsProps {
-  links: { label: string; link: string; order: number }[];
-  active: string;
-}
-
-export function TableOfContents({ links, active }: TableOfContentsProps) {
+const TableOfContents = ({ links }: TableOfContentsProps) => {
   const items = links.map((item) => (
     <Box<"a">
       component="a"
@@ -37,7 +31,6 @@ export function TableOfContents({ links, active }: TableOfContentsProps) {
       onClick={(event) => event.preventDefault()}
       key={item.label}
       className=""
-      sx={(theme) => ({ paddingLeft: item.order * theme.spacing.md })}
     >
       {item.label}
     </Box>
@@ -51,7 +44,7 @@ export function TableOfContents({ links, active }: TableOfContentsProps) {
       {items}
     </div>
   );
-}
+};
 
 const SettingsPage: NextPage = () => {
   return (
@@ -66,7 +59,7 @@ const SettingsPage: NextPage = () => {
           <h1 className="font-bold">設定</h1>
           <div className="w-9" />
         </div>
-        <TableOfContents links={props.links} active="" />
+        <TableOfContents links={LINKS} />
       </div>
     </>
   );
