@@ -9,11 +9,11 @@ type Props = {
 
 export const TaskCard: VFC<Props> = ({ schedule }) => {
   return (
-    <>
+    <div className="w-max">
       <div className="pb-4">
         <TaskHeader schedule={schedule} />
       </div>
       <TaskForm />
-    </>
+    </div>
   );
 };

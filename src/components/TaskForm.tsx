@@ -37,7 +37,7 @@ export const TaskForm: VFC = () => {
   };
 
   return (
-    <div className="w-max">
+    <div>
       <form onSubmit={taskListForm.onSubmit(handleSubmitToEditTask)}>
         <TaskList
           tasks={taskListForm.values.tasks}
