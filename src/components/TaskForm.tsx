@@ -9,10 +9,14 @@ export const initializedTask = (id: string): Task => {
   return { id, content: "", isDone: false };
 };
 
-export const TaskForm: VFC = () => {
+type Props = {
+  tasks: Task[];
+};
+
+export const TaskForm: VFC<Props> = ({ tasks }) => {
   const taskListForm = useForm({
     initialValues: {
-      tasks: formList<Task>([]),
+      tasks: formList<Task>(tasks),
     },
   });
   type TaskListFormValues = typeof taskListForm.values;
