@@ -19,7 +19,7 @@ export const TaskForm: VFC<Props> = ({ tasks }) => {
   type TaskListFormValues = typeof taskListForm.values;
 
   const taskForm = useForm<Task>({
-    initialValues: initializedTask(uuidv4()),
+    initialValues: initializedTask({ id: uuidv4(), scheduled_date: null }),
   });
   type TaskFormValues = typeof taskForm.values;
 

@@ -26,7 +26,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
 }) => {
   const handleClickToDuplicateTask: ComponentProps<"img">["onClick"] = () => {
     taskListForm.addListItem("tasks", {
-      ...initializedTask(uuidv4()),
+      ...initializedTask({ id: uuidv4(), scheduled_date: null }),
       content: task.content,
     });
   };
