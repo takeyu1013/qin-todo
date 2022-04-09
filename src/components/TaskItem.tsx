@@ -1,4 +1,4 @@
-import { MouseEventHandler, VFC } from "react";
+import { VFC, ComponentProps } from "react";
 import Image from "next/image";
 import { Task } from "../types/task";
 import { UseFormReturnType } from "@mantine/form/lib/use-form";
@@ -24,16 +24,14 @@ export const TaskItem: VFC<TaskItemProps> = ({
   taskListForm,
   handleSubmitToEditTask,
 }) => {
-  const handleClickToDuplicateTask: MouseEventHandler<
-    HTMLImageElement
-  > = () => {
+  const handleClickToDuplicateTask: ComponentProps<"img">["onClick"] = () => {
     taskListForm.addListItem("tasks", {
       ...initializedTask(uuidv4()),
       content: task.content,
     });
   };
 
-  const handleClickToDeleteTask: MouseEventHandler<HTMLImageElement> = () => {
+  const handleClickToDeleteTask: ComponentProps<"img">["onClick"] = () => {
     taskListForm.removeListItem("tasks", index);
   };
 
