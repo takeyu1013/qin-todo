@@ -2,20 +2,20 @@ import type { NextPage } from "next";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Box, Text, Group } from "@mantine/core";
+import { Text, Group } from "@mantine/core";
 
 const LINKS = [
   {
     label: "プロフィール",
-    link: "#usage",
+    link: "/profile",
   },
   {
     label: "アカウント",
-    link: "#position",
+    link: "/account",
   },
   {
     label: "テーマ",
-    link: "#overlays",
+    link: "theme",
   },
 ];
 
@@ -25,15 +25,14 @@ type TableOfContentsProps = {
 
 const TableOfContents = ({ links }: TableOfContentsProps) => {
   const items = links.map((item) => (
-    <Box<"a">
-      component="a"
-      href={item.link}
-      onClick={(event) => event.preventDefault()}
-      key={item.label}
-      className=""
-    >
-      {item.label}
-    </Box>
+    <Link href={item.link}>
+      <a key={item.label} className="py-3 flex justify-between">
+        <span className="font-bold">{item.label}</span>
+        <div className="next-image-space-removal-wrapper ">
+          <Image src="/arrow.svg" alt=">" width={22} height={22} />
+        </div>
+      </a>
+    </Link>
   ));
 
   return (
