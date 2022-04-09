@@ -3,11 +3,11 @@ import Image from "next/image";
 import { Task } from "../types/task";
 import { UseFormReturnType } from "@mantine/form/lib/use-form";
 import { FormList } from "@mantine/form/lib/form-list/form-list";
-import { initializedTask } from "./TaskForm";
 import { v4 as uuidv4 } from "uuid";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { GripVertical } from "tabler-icons-react";
+import { initializedTask } from "../../utils/initializedTask";
 
 type TaskItemProps = {
   task: Task;

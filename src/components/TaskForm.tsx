@@ -4,10 +4,7 @@ import { TaskList } from "./TaskList";
 import Image from "next/image";
 import { useForm, formList } from "@mantine/form";
 import { v4 as uuidv4 } from "uuid";
-
-export const initializedTask = (id: string): Task => {
-  return { id, content: "", isDone: false };
-};
+import { initializedTask } from "../../utils/initializedTask";
 
 type Props = {
   tasks: Task[];
