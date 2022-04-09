@@ -8,9 +8,12 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { GripVertical } from "tabler-icons-react";
 import { initializedTask } from "../../utils/initializedTask";
+import { ScheduleType } from "./TaskHeader";
+import { scheduledDateMap } from "../../utils/scheduledDateMap";
 
 type TaskItemProps = {
   task: Task;
+  schedule: ScheduleType;
   index: number;
   taskListForm: UseFormReturnType<{
     tasks: FormList<Task>;
@@ -20,13 +23,17 @@ type TaskItemProps = {
 
 export const TaskItem: VFC<TaskItemProps> = ({
   task,
+  schedule,
   index,
   taskListForm,
   handleSubmitToEditTask,
 }) => {
   const handleClickToDuplicateTask: ComponentProps<"img">["onClick"] = () => {
     taskListForm.addListItem("tasks", {
-      ...initializedTask({ id: uuidv4(), scheduled_date: null }),
+      ...initializedTask({
+        id: uuidv4(),
+        scheduled_date: scheduledDateMap[schedule],
+      }),
       content: task.content,
     });
   };
