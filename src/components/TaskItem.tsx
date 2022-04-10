@@ -1,16 +1,19 @@
-import { MouseEventHandler, VFC } from "react";
+import { VFC, ComponentProps } from "react";
 import Image from "next/image";
 import { Task } from "../types/task";
 import { UseFormReturnType } from "@mantine/form/lib/use-form";
 import { FormList } from "@mantine/form/lib/form-list/form-list";
-import { initializedTask } from "./TaskForm";
 import { v4 as uuidv4 } from "uuid";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { GripVertical } from "tabler-icons-react";
+import { initializedTask } from "../../utils/initializedTask";
+import { ScheduleType } from "./TaskHeader";
+import { scheduledDateMap } from "../../utils/scheduledDateMap";
 
 type TaskItemProps = {
   task: Task;
+  schedule: ScheduleType;
   index: number;
   taskListForm: UseFormReturnType<{
     tasks: FormList<Task>;
@@ -20,20 +23,22 @@ type TaskItemProps = {
 
 export const TaskItem: VFC<TaskItemProps> = ({
   task,
+  schedule,
   index,
   taskListForm,
   handleSubmitToEditTask,
 }) => {
-  const handleClickToDuplicateTask: MouseEventHandler<
-    HTMLImageElement
-  > = () => {
+  const handleClickToDuplicateTask: ComponentProps<"img">["onClick"] = () => {
     taskListForm.addListItem("tasks", {
-      ...initializedTask(uuidv4()),
+      ...initializedTask({
+        id: uuidv4(),
+        scheduled_date: scheduledDateMap[schedule],
+      }),
       content: task.content,
     });
   };
 
-  const handleClickToDeleteTask: MouseEventHandler<HTMLImageElement> = () => {
+  const handleClickToDeleteTask: ComponentProps<"img">["onClick"] = () => {
     taskListForm.removeListItem("tasks", index);
   };
 
@@ -53,7 +58,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
     >
       <div className="flex items-center gap-x-2 mr-auto">
         <GripVertical
-          className="opacity-0 group-hover:opacity-100 absolute -left-6"
+          className="outline-none opacity-0 group-hover:opacity-100 absolute -left-6"
           size={24}
           strokeWidth={2}
           color={"#C2C6D2"}

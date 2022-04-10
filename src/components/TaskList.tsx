@@ -5,9 +5,11 @@ import { Task } from "../types/task";
 import { TaskItem } from "./TaskItem";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
+import { ScheduleType } from "./TaskHeader";
 
 type TaskListProps = {
   tasks: Task[];
+  schedule: ScheduleType;
   taskListForm: UseFormReturnType<{
     tasks: FormList<Task>;
   }>;
@@ -16,6 +18,7 @@ type TaskListProps = {
 
 export const TaskList: VFC<TaskListProps> = ({
   tasks,
+  schedule,
   taskListForm,
   handleSubmitToEditTask,
 }) => {
@@ -48,6 +51,7 @@ export const TaskList: VFC<TaskListProps> = ({
               <div className="py-2">
                 <TaskItem
                   task={task}
+                  schedule={schedule}
                   index={index}
                   taskListForm={taskListForm}
                   handleSubmitToEditTask={handleSubmitToEditTask}

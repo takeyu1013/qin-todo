@@ -4,21 +4,28 @@ import { TaskList } from "./TaskList";
 import Image from "next/image";
 import { useForm, formList } from "@mantine/form";
 import { v4 as uuidv4 } from "uuid";
+import { initializedTask } from "../../utils/initializedTask";
+import { ScheduleType } from "./TaskHeader";
+import { scheduledDateMap } from "../../utils/scheduledDateMap";
 
-export const initializedTask = (id: string): Task => {
-  return { id, content: "", isDone: false };
+type Props = {
+  tasks: Task[];
+  schedule: ScheduleType;
 };
 
-export const TaskForm: VFC = () => {
+export const TaskForm: VFC<Props> = ({ tasks, schedule }) => {
   const taskListForm = useForm({
     initialValues: {
-      tasks: formList<Task>([]),
+      tasks: formList<Task>(tasks),
     },
   });
   type TaskListFormValues = typeof taskListForm.values;
 
   const taskForm = useForm<Task>({
-    initialValues: initializedTask(uuidv4()),
+    initialValues: initializedTask({
+      id: uuidv4(),
+      scheduled_date: scheduledDateMap[schedule],
+    }),
   });
   type TaskFormValues = typeof taskForm.values;
 
@@ -37,10 +44,11 @@ export const TaskForm: VFC = () => {
   };
 
   return (
-    <div className="w-max">
+    <div>
       <form onSubmit={taskListForm.onSubmit(handleSubmitToEditTask)}>
         <TaskList
           tasks={taskListForm.values.tasks}
+          schedule={schedule}
           taskListForm={taskListForm}
           handleSubmitToEditTask={handleSubmitToEditTask}
         />
