@@ -34,10 +34,12 @@ export const TaskItem: VFC<TaskItemProps> = ({
     e
   ) => {
     const prevValue = taskListForm.values.tasks[index];
+    const isChecked = e.currentTarget.checked;
 
     taskListForm.setListItem("tasks", index, {
       ...prevValue,
-      isDone: e.currentTarget.checked,
+      isDone: isChecked,
+      done_at: isChecked ? new Date() : null,
     });
     triggerTaskListFormSubmit();
   };
