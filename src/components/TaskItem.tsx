@@ -38,7 +38,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
 
     taskListForm.setListItem("tasks", index, {
       ...prevValue,
-      isDone: isChecked,
+      is_done: isChecked,
       done_at: isChecked ? new Date() : null,
     });
     triggerTaskListFormSubmit();
@@ -88,7 +88,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
           <div className="next-image-space-removal-wrapper">
             <Image
               src={`${
-                task.isDone
+                task.is_done
                   ? "/onCheckedCheckboxIcon.svg"
                   : "/offCheckedCheckboxIcon.svg"
               }`}
@@ -102,10 +102,10 @@ export const TaskItem: VFC<TaskItemProps> = ({
           <input
             className="absolute opacity-0"
             type="checkbox"
-            {...taskListForm.getListInputProps("tasks", index, "isDone", {
+            {...taskListForm.getListInputProps("tasks", index, "is_done", {
               type: "checkbox",
             })}
-            checked={taskListForm.values.tasks[index].isDone}
+            checked={taskListForm.values.tasks[index].is_done}
             onChange={handleClickToToggleIsDone}
           />
         </label>
@@ -113,7 +113,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
 
       <input
         className={`w-full bg-transparent outline-none break-all ${
-          task.isDone ? "line-through text-[#C2C6D2]" : ""
+          task.is_done ? "line-through text-[#C2C6D2]" : ""
         }`}
         type="text"
         onBlur={taskListForm.onSubmit(handleSubmitToEditTask)}

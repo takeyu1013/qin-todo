@@ -5,6 +5,6 @@ export type Task = {
   id: string;
   content: string;
   scheduled_date: ScheduledDate;
-  isDone: boolean;
+  is_done: boolean;
   done_at: DoneAt;
 };
