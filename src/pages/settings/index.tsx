@@ -7,25 +7,27 @@ import { Text, Group } from "@mantine/core";
 const LINKS = [
   {
     label: "プロフィール",
-    link: "/profile",
+    path: "/profile",
   },
   {
     label: "アカウント",
-    link: "/account",
+    path: "/account",
   },
   {
     label: "テーマ",
-    link: "theme",
+    path: "/theme",
   },
 ];
 
+type Link = { label: string; path: string };
+
 type TableOfContentsProps = {
-  links: { label: string; link: string }[];
+  links: Link[];
 };
 
 const TableOfContents = ({ links }: TableOfContentsProps) => {
   const items = links.map((item) => (
-    <Link href={item.link}>
+    <Link href={item.path}>
       <a key={item.label} className="py-3 flex justify-between">
         <span className="font-bold">{item.label}</span>
         <div className="next-image-space-removal-wrapper ">
