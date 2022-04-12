@@ -30,6 +30,18 @@ export const TaskItem: VFC<TaskItemProps> = ({
   triggerTaskListFormSubmit,
   handleSubmitToEditTask,
 }) => {
+  const handleClickToToggleIsDone: ComponentProps<"input">["onChange"] = (
+    e
+  ) => {
+    const prevValue = taskListForm.values.tasks[index];
+
+    taskListForm.setListItem("tasks", index, {
+      ...prevValue,
+      isDone: e.currentTarget.checked,
+    });
+    triggerTaskListFormSubmit();
+  };
+
   const handleClickToDuplicateTask: ComponentProps<"img">["onClick"] = () => {
     taskListForm.addListItem("tasks", {
       ...initializedTask({
@@ -91,6 +103,8 @@ export const TaskItem: VFC<TaskItemProps> = ({
             {...taskListForm.getListInputProps("tasks", index, "isDone", {
               type: "checkbox",
             })}
+            checked={taskListForm.values.tasks[index].isDone}
+            onChange={handleClickToToggleIsDone}
           />
         </label>
       </div>
