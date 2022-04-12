@@ -49,6 +49,8 @@ export const TaskForm: VFC<Props> = ({ tasks, schedule }) => {
   };
 
   const handleSubmitToEditTask = ({ tasks }: TaskListFormValues) => {
+    if (!taskListForm.values.tasks.length) return;
+
     console.table(tasks); // TODO: replace with backend query
   };
 
