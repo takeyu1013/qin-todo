@@ -18,6 +18,7 @@ type TaskItemProps = {
   taskListForm: UseFormReturnType<{
     tasks: FormList<Task>;
   }>;
+  triggerTaskListFormSubmit: () => void;
   handleSubmitToEditTask: ({ tasks }: { tasks: FormList<Task> }) => void;
 };
 
@@ -26,8 +27,23 @@ export const TaskItem: VFC<TaskItemProps> = ({
   schedule,
   index,
   taskListForm,
+  triggerTaskListFormSubmit,
   handleSubmitToEditTask,
 }) => {
+  const handleClickToToggleIsDone: ComponentProps<"input">["onChange"] = (
+    e
+  ) => {
+    const prevValue = taskListForm.values.tasks[index];
+    const isChecked = e.currentTarget.checked;
+
+    taskListForm.setListItem("tasks", index, {
+      ...prevValue,
+      is_done: isChecked,
+      done_at: isChecked ? new Date() : null,
+    });
+    triggerTaskListFormSubmit();
+  };
+
   const handleClickToDuplicateTask: ComponentProps<"img">["onClick"] = () => {
     taskListForm.addListItem("tasks", {
       ...initializedTask({
@@ -36,10 +52,12 @@ export const TaskItem: VFC<TaskItemProps> = ({
       }),
       content: task.content,
     });
+    triggerTaskListFormSubmit();
   };
 
   const handleClickToDeleteTask: ComponentProps<"img">["onClick"] = () => {
     taskListForm.removeListItem("tasks", index);
+    triggerTaskListFormSubmit();
   };
 
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -70,7 +88,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
           <div className="next-image-space-removal-wrapper">
             <Image
               src={`${
-                task.isDone
+                task.is_done
                   ? "/onCheckedCheckboxIcon.svg"
                   : "/offCheckedCheckboxIcon.svg"
               }`}
@@ -84,16 +102,18 @@ export const TaskItem: VFC<TaskItemProps> = ({
           <input
             className="absolute opacity-0"
             type="checkbox"
-            {...taskListForm.getListInputProps("tasks", index, "isDone", {
+            {...taskListForm.getListInputProps("tasks", index, "is_done", {
               type: "checkbox",
             })}
+            checked={taskListForm.values.tasks[index].is_done}
+            onChange={handleClickToToggleIsDone}
           />
         </label>
       </div>
 
       <input
         className={`w-full bg-transparent outline-none break-all ${
-          task.isDone ? "line-through text-[#C2C6D2]" : ""
+          task.is_done ? "line-through text-[#C2C6D2]" : ""
         }`}
         type="text"
         onBlur={taskListForm.onSubmit(handleSubmitToEditTask)}

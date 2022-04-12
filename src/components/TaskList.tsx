@@ -13,6 +13,7 @@ type TaskListProps = {
   taskListForm: UseFormReturnType<{
     tasks: FormList<Task>;
   }>;
+  triggerTaskListFormSubmit: () => void;
   handleSubmitToEditTask: ({ tasks }: { tasks: FormList<Task> }) => void;
 };
 
@@ -20,6 +21,7 @@ export const TaskList: VFC<TaskListProps> = ({
   tasks,
   schedule,
   taskListForm,
+  triggerTaskListFormSubmit,
   handleSubmitToEditTask,
 }) => {
   const handleDragEndToReorderTaskList = (event: DragEndEvent) => {
@@ -40,6 +42,8 @@ export const TaskList: VFC<TaskListProps> = ({
       from: activeIndex,
       to: overIndex,
     });
+
+    triggerTaskListFormSubmit();
   };
 
   return (
@@ -54,6 +58,7 @@ export const TaskList: VFC<TaskListProps> = ({
                   schedule={schedule}
                   index={index}
                   taskListForm={taskListForm}
+                  triggerTaskListFormSubmit={triggerTaskListFormSubmit}
                   handleSubmitToEditTask={handleSubmitToEditTask}
                 />
               </div>
