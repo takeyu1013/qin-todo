@@ -1,4 +1,4 @@
-import { VFC } from "react";
+import { useRef, VFC } from "react";
 import { Task } from "../types/task";
 import { TaskList } from "./TaskList";
 import Image from "next/image";
@@ -14,6 +14,8 @@ type Props = {
 };
 
 export const TaskForm: VFC<Props> = ({ tasks, schedule }) => {
+  const taskListFormSubmitButtonRef = useRef<HTMLButtonElement>(null);
+
   const taskListForm = useForm({
     initialValues: {
       tasks: formList<Task>(tasks),
@@ -39,6 +41,12 @@ export const TaskForm: VFC<Props> = ({ tasks, schedule }) => {
     taskForm.reset();
   };
 
+  const triggerTaskListFormSubmit = () => {
+    setTimeout(() => {
+      taskListFormSubmitButtonRef?.current?.click();
+    }, 500);
+  };
+
   const handleSubmitToEditTask = ({ tasks }: TaskListFormValues) => {
     console.table(tasks);
   };
@@ -50,9 +58,14 @@ export const TaskForm: VFC<Props> = ({ tasks, schedule }) => {
           tasks={taskListForm.values.tasks}
           schedule={schedule}
           taskListForm={taskListForm}
+          triggerTaskListFormSubmit={triggerTaskListFormSubmit}
           handleSubmitToEditTask={handleSubmitToEditTask}
         />
-        <button className="block invisible" />
+        <button
+          type="submit"
+          className="block invisible"
+          ref={taskListFormSubmitButtonRef}
+        />
       </form>
 
       <form onSubmit={taskForm.onSubmit(handleSubmitToAddTask)}>

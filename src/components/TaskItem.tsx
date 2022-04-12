@@ -18,6 +18,7 @@ type TaskItemProps = {
   taskListForm: UseFormReturnType<{
     tasks: FormList<Task>;
   }>;
+  triggerTaskListFormSubmit: () => void;
   handleSubmitToEditTask: ({ tasks }: { tasks: FormList<Task> }) => void;
 };
 
@@ -26,6 +27,7 @@ export const TaskItem: VFC<TaskItemProps> = ({
   schedule,
   index,
   taskListForm,
+  triggerTaskListFormSubmit,
   handleSubmitToEditTask,
 }) => {
   const handleClickToDuplicateTask: ComponentProps<"img">["onClick"] = () => {
@@ -36,10 +38,12 @@ export const TaskItem: VFC<TaskItemProps> = ({
       }),
       content: task.content,
     });
+    triggerTaskListFormSubmit();
   };
 
   const handleClickToDeleteTask: ComponentProps<"img">["onClick"] = () => {
     taskListForm.removeListItem("tasks", index);
+    triggerTaskListFormSubmit();
   };
 
   const { attributes, listeners, setNodeRef, transform, transition } =
