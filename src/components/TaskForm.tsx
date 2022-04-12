@@ -37,6 +37,7 @@ export const TaskForm: VFC<Props> = ({ tasks, schedule }) => {
     taskListForm.addListItem("tasks", {
       ...task,
     });
+    console.table(task); // TODO: replace with backend query
 
     taskForm.reset();
   };
@@ -48,7 +49,7 @@ export const TaskForm: VFC<Props> = ({ tasks, schedule }) => {
   };
 
   const handleSubmitToEditTask = ({ tasks }: TaskListFormValues) => {
-    console.table(tasks);
+    console.table(tasks); // TODO: replace with backend query
   };
 
   return (
