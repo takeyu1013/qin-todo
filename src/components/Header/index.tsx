@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Menu } from "@mantine/core";
 import { VFC } from "react";
 import { Auth } from "@supabase/ui";
+import { supabase } from "../../../utils/supabaseClient";
 
 export const Header: VFC = () => {
   const { user } = Auth.useUser();
@@ -67,6 +68,9 @@ export const Header: VFC = () => {
               />
             </div>
           }
+          onClick={() => {
+            supabase.auth.signOut();
+          }}
         >
           ログアウト
         </Menu.Item>
