@@ -10,6 +10,7 @@ type Props = {
 
 export const Header = (props: Props) => {
   const className = "font-bold px-6 py-3";
+  const dummyImage: Props["user"]["image"] = "https://i.pravatar.cc/36";
 
   return (
     <header className="flex justify-between items-center px-[196px] h-20 w-full bg-white">
@@ -28,7 +29,7 @@ export const Header = (props: Props) => {
         control={
           <div className="next-image-space-removal-wrapper">
             <Image
-              src={props.user.image}
+              src={props.user.image || dummyImage}
               alt="プロフィール画像"
               width="36px"
               height="36px"
