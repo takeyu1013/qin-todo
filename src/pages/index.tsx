@@ -30,11 +30,7 @@ const Home: NextPage = () => {
 
   return (
     <Authentication>
-      <Header
-        user={{
-          image: user.user_metadata?.avatar_url,
-        }}
-      />
+      <Header user={user} />
       <Main />
     </Authentication>
   );
