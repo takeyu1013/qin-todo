@@ -1,14 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "@mantine/core";
-import { User } from "@supabase/gotrue-js";
 import { VFC } from "react";
+import { Auth } from "@supabase/ui";
 
-type Props = {
-  user: User;
-};
+export const Header: VFC = () => {
+  const { user } = Auth.useUser();
 
-export const Header: VFC<Props> = ({ user }) => {
   const menuItemClass = "font-bold px-6 py-3";
   const dummyAvatarImage = "https://i.pravatar.cc/36";
 
@@ -29,7 +27,7 @@ export const Header: VFC<Props> = ({ user }) => {
         control={
           <div className="next-image-space-removal-wrapper">
             <Image
-              src={user.user_metadata?.avatar_url || dummyAvatarImage}
+              src={user?.user_metadata?.avatar_url || dummyAvatarImage}
               alt="プロフィール画像"
               width="36px"
               height="36px"
