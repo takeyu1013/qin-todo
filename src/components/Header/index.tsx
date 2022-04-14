@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const Header = (props: Props) => {
-  const className = "font-bold px-6 py-3";
+  const menuItemClass = "font-bold px-6 py-3";
   const dummyImage: Props["user"]["image"] = "https://i.pravatar.cc/36";
 
   return (
@@ -40,7 +40,7 @@ export const Header = (props: Props) => {
         }
       >
         <Menu.Item
-          className={className}
+          className={menuItemClass}
           icon={
             <div className="next-image-space-removal-wrapper">
               <Image
@@ -56,7 +56,7 @@ export const Header = (props: Props) => {
           設定
         </Menu.Item>
         <Menu.Item
-          className={className}
+          className={menuItemClass}
           color="red"
           icon={
             <div className="next-image-space-removal-wrapper">
