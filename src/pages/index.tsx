@@ -10,7 +10,7 @@ const Authentication = dynamic<AuthenticationProps>(
     import("../components/Authentication").then((mod) => mod.Authentication),
   {
     ssr: false,
-    loading: () => <Loader />,
+    loading: () => <Loader />, // TODO: should be replaced with `Page Level Loader`
   }
 );
 
