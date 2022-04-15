@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "@mantine/core";
+import { VFC } from "react";
+import { Auth } from "@supabase/ui";
+import { supabase } from "../../../utils/supabaseClient";
 
-type Props = {
-  user: {
-    image: string;
-  };
-};
+export const Header: VFC = () => {
+  const { user } = Auth.useUser();
 
-export const Header = (props: Props) => {
-  const className = "font-bold px-6 py-3";
+  const menuItemClass = "font-bold px-6 py-3";
+  const dummyAvatarImage = "https://i.pravatar.cc/36";
 
   return (
     <header className="flex justify-between items-center px-[196px] h-20 w-full bg-white">
@@ -28,7 +28,7 @@ export const Header = (props: Props) => {
         control={
           <div className="next-image-space-removal-wrapper">
             <Image
-              src={props.user.image}
+              src={user?.user_metadata?.avatar_url || dummyAvatarImage}
               alt="プロフィール画像"
               width="36px"
               height="36px"
@@ -39,7 +39,7 @@ export const Header = (props: Props) => {
         }
       >
         <Menu.Item
-          className={className}
+          className={menuItemClass}
           icon={
             <div className="next-image-space-removal-wrapper">
               <Image
@@ -55,7 +55,7 @@ export const Header = (props: Props) => {
           設定
         </Menu.Item>
         <Menu.Item
-          className={className}
+          className={menuItemClass}
           color="red"
           icon={
             <div className="next-image-space-removal-wrapper">
@@ -68,6 +68,9 @@ export const Header = (props: Props) => {
               />
             </div>
           }
+          onClick={() => {
+            supabase.auth.signOut();
+          }}
         >
           ログアウト
         </Menu.Item>
