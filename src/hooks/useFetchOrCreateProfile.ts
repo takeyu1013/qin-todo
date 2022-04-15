@@ -44,8 +44,8 @@ const useFetchOrCreateProfile = (user: User | null) => {
         .then((profile) => {
           setProfile(profile);
         })
-        .catch((error) => {
-          console.error(error);
+        .catch((error: PostgrestError) => {
+          console.error(error.message, error.code, error.details, error.hint);
           setError(error);
         })
         .finally(() => {

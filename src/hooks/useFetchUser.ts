@@ -23,7 +23,7 @@ const useFetchUser = (session: Session | null) => {
         .then((user) => {
           setUser(user);
         })
-        .catch((error) => {
+        .catch((error: ApiError) => {
           setError(error);
           console.error(error.message, error.status);
         })
