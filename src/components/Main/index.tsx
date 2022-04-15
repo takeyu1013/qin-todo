@@ -1,4 +1,4 @@
-import { useEffect, VFC } from "react";
+import { VFC } from "react";
 import { TaskCard } from "../TaskCard";
 import { ScheduleType, SCHEDULE_LIST } from "../TaskHeader";
 import { Task } from "../../types/task";

@@ -43,7 +43,6 @@ const useFetchOrCreateProfile = (user: User | null) => {
       fetchOrCreateProfile(user)
         .then((profile) => {
           setProfile(profile);
-          console.table(profile);
         })
         .catch((error) => {
           console.error(error);
