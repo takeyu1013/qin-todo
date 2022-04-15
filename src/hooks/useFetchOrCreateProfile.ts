@@ -3,15 +3,15 @@ import { User } from "@supabase/gotrue-js";
 import { supabase } from "../../utils/supabaseClient";
 import { PostgrestError } from "@supabase/supabase-js";
 
-const findOrCreateProfile = async (user: User) => {
-  const { data, count } = await findProfile();
+const fetchOrCreateProfile = async (user: User) => {
+  const { data, count } = await fetchProfile();
 
   if (count) return data;
 
   return await createProfile(user);
 };
 
-const findProfile = async () => {
+const fetchProfile = async () => {
   const { data, error, count } = await supabase
     .from("profiles")
     .select("*", { count: "exact" });
@@ -40,7 +40,7 @@ const useFetchOrCreateProfile = (user: User | null) => {
     if (user) {
       setIsLoading(true);
 
-      findOrCreateProfile(user)
+      fetchOrCreateProfile(user)
         .then((profile) => {
           setProfile(profile);
           console.table(profile);
