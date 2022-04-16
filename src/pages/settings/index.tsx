@@ -4,34 +4,62 @@ import Image from "next/image";
 import Link from "next/link";
 import { Text, Group } from "@mantine/core";
 
-const LINKS = [
+const SETTINGS = [
   {
     label: "プロフィール",
-    path: "/profile",
+    // path: "/profile",
+    path: "#",
+    icon: "/arrow.svg",
   },
   {
     label: "アカウント",
-    path: "/account",
+    // path: "/account",
+    path: "#",
+    icon: "/arrow.svg",
   },
   {
     label: "テーマ",
-    path: "/theme",
+    // path: "/theme",
+    path: "#",
+    icon: "/arrow.svg",
   },
 ];
 
-type Link = { label: string; path: string };
+const SUPPORTS = [
+  {
+    label: "プライバシーポリシー",
+    // path: "/policy",
+    path: "#",
+    icon: "/arrow.svg",
+  },
+  {
+    label: "利用規約",
+    // path: "/rules",
+    path: "#",
+    icon: "/arrow.svg",
+  },
+  {
+    label: "お問い合わせ",
+    // path: "/question",
+    path: "#",
+    icon: "/externalLink.svg",
+  },
+];
+
+type Link = { label: string; path: string; icon: string };
 
 type TableOfContentsProps = {
+  title: string;
   links: Link[];
 };
 
-const TableOfContents = ({ links }: TableOfContentsProps) => {
+const TableOfContents = ({ title, links }: TableOfContentsProps) => {
   const items = links.map((item) => (
-    <Link href={item.path}>
-      <a key={item.label} className="py-3 flex justify-between">
+    <Link key={item.label} href={item.path}>
+      <a className="py-3 flex justify-between">
         <span className="font-bold">{item.label}</span>
         <div className="next-image-space-removal-wrapper ">
-          <Image src="/arrow.svg" alt=">" width={22} height={22} />
+          <Image src={item.icon} alt=">" width={22} height={22} />
         </div>
       </a>
     </Link>
@@ -40,7 +68,7 @@ const TableOfContents = ({ links }: TableOfContentsProps) => {
   return (
     <div className="max-w-2xl mx-auto p-6">
       <Group mb="xs">
-        <Text className="text-gray-400">設定</Text>
+        <Text className="text-gray-400">{title}</Text>
       </Group>
       {items}
     </div>
@@ -49,20 +77,19 @@ const TableOfContents = ({ links }: TableOfContentsProps) => {
 
 const SettingsPage: NextPage = () => {
   return (
-    <>
-      <div className="px-48 py-7">
-        <div className="flex justify-between">
-          <Link href="/">
-            <a className="w-6 next-image-space-removal-wrapper">
-              <Image src="/close.svg" alt="x" width={22} height={22} />
-            </a>
-          </Link>
-          <h1 className="font-bold">設定</h1>
-          <div className="w-9" />
-        </div>
-        <TableOfContents links={LINKS} />
+    <main className="px-48 py-7">
+      <div className="flex justify-between">
+        <Link href="/">
+          <a className="w-6 next-image-space-removal-wrapper">
+            <Image src="/close.svg" alt="x" width={22} height={22} />
+          </a>
+        </Link>
+        <h1 className="font-bold">設定</h1>
+        <div className="w-9" />
       </div>
-    </>
+      <TableOfContents title="設定" links={SETTINGS} />
+      <TableOfContents title="サポート" links={SUPPORTS} />
+    </main>
   );
 };
 
