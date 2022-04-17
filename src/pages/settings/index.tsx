@@ -23,7 +23,7 @@ const SETTINGS = [
     path: "#",
     icon: "/arrow.svg",
   },
-];
+] as const;
 
 const SUPPORTS = [
   {
@@ -44,33 +44,31 @@ const SUPPORTS = [
     path: "#",
     icon: "/externalLink.svg",
   },
-];
+] as const;
 
 type Link = { label: string; path: string; icon: string };
 
-type TableOfContentsProps = {
+type TableOfContentsProps = Readonly<{
   title: string;
-  links: Link[];
-};
+  links: ReadonlyArray<Link>;
+}>;
 
 const TableOfContents = ({ title, links }: TableOfContentsProps) => {
-  const items = links.map((item) => (
-    <Link key={item.label} href={item.path}>
-      <a className="py-3 flex justify-between">
-        <span className="font-bold">{item.label}</span>
-        <div className="next-image-space-removal-wrapper ">
-          <Image src={item.icon} alt=">" width={22} height={22} />
-        </div>
-      </a>
-    </Link>
-  ));
-
   return (
     <div className="max-w-2xl mx-auto p-6">
       <Group mb="xs">
-        <Text className="text-gray-400">{title}</Text>
+        <Text className="text-gray-400 font-bold">{title}</Text>
       </Group>
-      {items}
+      {links.map(({ label, path, icon }) => (
+        <Link key={label} href={path}>
+          <a className="py-3 flex justify-between">
+            <span className="font-bold">{label}</span>
+            <div className="next-image-space-removal-wrapper ">
+              <Image src={icon} alt=">" width={22} height={22} />
+            </div>
+          </a>
+        </Link>
+      ))}
     </div>
   );
 };
@@ -85,7 +83,8 @@ const SettingsPage: NextPage = () => {
           </a>
         </Link>
         <h1 className="font-bold">設定</h1>
-        <div className="w-9" />
+        {/* フレックスで配置しやすくするためのダミー要素 */}
+        <div className="w-6" />
       </div>
       <TableOfContents title="設定" links={SETTINGS} />
       <TableOfContents title="サポート" links={SUPPORTS} />
