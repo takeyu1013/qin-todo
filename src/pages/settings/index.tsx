@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import type { VFC } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -53,7 +54,7 @@ type TableOfContentsProps = Readonly<{
   links: ReadonlyArray<Link>;
 }>;
 
-const TableOfContents = ({ title, links }: TableOfContentsProps) => {
+const TableOfContents: VFC<TableOfContentsProps> = ({ title, links }) => {
   return (
     <div className="max-w-2xl mx-auto p-6">
       <Group mb="xs">
