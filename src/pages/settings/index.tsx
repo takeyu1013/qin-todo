@@ -54,7 +54,9 @@ type TableOfContentsProps = Readonly<{
   links: ReadonlyArray<Link>;
 }>;
 
-const TableOfContents: VFC<TableOfContentsProps> = ({ title, links }) => {
+const TableOfContents: VFC<TableOfContentsProps> = (props) => {
+  const { title, links } = props;
+
   return (
     <div className="max-w-2xl mx-auto p-6">
       <Group mb="xs">
