@@ -38,22 +38,26 @@ export const Header: VFC = () => {
           </div>
         }
       >
-        <Menu.Item
-          className={menuItemClass}
-          icon={
-            <div className="next-image-space-removal-wrapper">
-              <Image
-                src="/settings.svg"
-                alt="設定"
-                width="22px"
-                height="22px"
-                layout="fixed"
-              />
-            </div>
-          }
-        >
-          設定
-        </Menu.Item>
+        <Link href="/settings">
+          <a>
+            <Menu.Item
+              className={menuItemClass}
+              icon={
+                <div className="next-image-space-removal-wrapper">
+                  <Image
+                    src="/settings.svg"
+                    alt="設定"
+                    width="22px"
+                    height="22px"
+                    layout="fixed"
+                  />
+                </div>
+              }
+            >
+              設定
+            </Menu.Item>
+          </a>
+        </Link>
         <Menu.Item
           className={menuItemClass}
           color="red"
